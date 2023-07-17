@@ -916,12 +916,6 @@ h4.keranjang-nama{
 			border-top-left-radius: 20px;
 			background-color: #fff;
 		}
-		.carousel-item img{
-			margin-top:0px;
-		}
-		/* .carousel-indicators{
-			display: none;
-		} */
 		.col{
 			padding-right: 8px !important;
 			padding-left: 8px !important;
@@ -947,208 +941,259 @@ h4.keranjang-nama{
 				border-radius:8px;
 				/* height: 146px !important; */
 			}
-			
-			.card{
-				min-width: 120px;
-				min-height: 255px;
-				max-width: 120px;
-				
-				width: auto;
-				height: auto;
-			}
-			.card-body{
-				margin-left:-14px
-			}
-			h5.card-title{
-				font-size: 12px;
-			}
-			p.card-text{
-				font-size: 10px;
-			}
-			.harga{ 
-				font-size: 11px;
-				margin-top:-12px;
-				margin-bottom:-12px
-			}
 		 
-			.harga-promo{
-				font-size:8px;
-			}
-			.harga-promo span{
-				font-size:7px;
-			}
-			.lokasi{
-				font-size: 8.5px;
-				/* margin-top:-20px;  */
-				margin-left: 12px;
-			}
-			
-			.terjual{
-				font-size: 8.5px;
-				margin-top: 2.5px;
-				padding-right:12px
-			}
-			
-			#page-title {
-				padding-top: 1px !important;
-				padding-bottom: -30px !important;
-				margin-bottom: 0px !important;
-			}
-		 
-			p.jenis-kategori{
-				padding-top:12px;
-				font-size: 20px;
-				margin-bottom:-12px !important
-			}
-		 
-			.hapus{
-				padding:2px 0; background-color: white; color:#b75ae2; border:none; float:right; margin-right:14px 
-			}
-		#title-mob.container{
-			display: none;
-		}
-		.tab-content img{
-			/* width:612.3px; height:612.3px; */
-			margin-top: -20px;
-			min-width: 412px !important;
-			min-height: 412px ;
-			/* margin: 8px 9px 9px 11px; */
-		}
-		.tab-nav li{
-			height:110px !important;
-		}
-		.tab-nav li a img{
-			max-height: 110px; max-width: 110px !important; 
-			
-		}
-		ul.tab-nav:not(.tab-nav-lg) li {
-				margin-right: 10px !important;
-		}
-		ul.tab-nav:not(.tab-nav-lg) li a {
-			padding: 0 0px !important;
-		}
-		#mob-produk{
-			margin: 0 13px;
-		}
-		
-		div .share{
-			display: none !important;
-		}
-		.hilang{
-			display: none !important;
-		}
-		h1.rp{
-			font-size: 24px !important;
-		}
-		p.pilih{
-			margin-bottom: 5px !important;
-			margin-top: 5px !important;
-		}
-		.btn-outline-secondary:active {
-			box-shadow: #b75ae2 !important 
-		}
-		.tebal{
-			font-size: 15px !important;
-			padding: 8px 20px;
-		}
-		.btn:focus {
-			outline: none;
-			box-shadow: none;
-		}
-		/* .size{
-			border:0px !important
-		} */
-		.radio-kirim{
-			margin-left:0px
-		}
-		.carousel-indicators{
-			margin-left:0% !important;
-			margin-right:0% !important
-		}
-		.carousel-indicators li {
-			text-indent: 0px !important;
-			cursor: pointer;
-			width: 110px !important;
-			/* padding-top:-50px !important; */
-		
-			margin-top:-5px !important;
-			margin-bottom:70px !important;
-			margin-right: 6px !important;
-			margin-left: 0px !important;
+	}
+	
+	
+	
 
-		}
-		
-		/* modal */
-		
-		.btn-custom{
-			padding: 9.6px 20.3px 8.4px 25.9px;
-			font-size: 14px;
-		}
-		label {
-			font-size: 14px !important;
-		}
+	.container_login {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+	}
+  
+	.login-separator {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-image: #fff;
+		padding: 30px 0;
+		min-height: 110px;
+		width: 100%;
+	}
 
-		/* keranjang belanja */
-		.img-keranjang{
-			width:110px;
-			height:110px;
-			margin-left:3px
-		}
-		.checkItem{
-			margin-left:8px; 
-			width: 20px; 
-			height: 16px;
-		}
-		.form-check-input{
-			margin-left:-12px;
-			margin-top:5px;   
-			width: 20px; 
-			height: 16px;
-		}
-		.form-check-label{
-			margin-left:0px;  
-			font-size: 12px;
-		}
-		#btn-hapus-semua{
-			padding:15px 0; 
-			margin-right: 20px;
-			background-color:#fff; 
-		}
-		
-    h4.keranjang-nama{
-      font-size: 12px !important;
-    }
-    
-    .keranjang-ukuran{
-      font-size: 10px; 
-    }  
-   
-    .harga-promo-keranjang{
-      margin-bottom:10px !important;
-    }
-    .harga-promo-keranjang .harga-awal{
-      font-size:10px;
-    }
-    .harga-promo-keranjang .disc{
-      font-size:10px;
-    }
-    .harga-promo-keranjang .harga-disc{ 
-      font-size: 12px;
-      margin: 9px 5px 0px 0px;
-    }
-		.harga-promo-keranjang .subtotal{
-			float:right; margin-right:10px; font-size:12px;font-family: 'Roboto', sans-serif;
-			font-weight: bold;
-			color: #b75ae2;
-		}
-    #keranjang-quantity.quantity{
-      float: left !important;
-    }
-		#keranjang-btn{
-			background-color: #fff;
-		}
-		/* end keranjang belanja */
+	.img-fluid {
+		width: 100%;
+		height: 338px !important;
+		border-radius: 8px;
 		
 	}
 	
+  	h1 {
+		font-family: Roboto, "sans-serif";
+		padding-left: 15px;
+	}
+	
+	.text-title{
+	  font-family: Roboto, sans-serif;
+	  font-size: 24px;
+	  font-weight: bold;
+	  font-stretch: condensed;
+	  font-style: normal;
+	  line-height: 1;
+	  letter-spacing: normal;
+	  text-align: left;
+	  color: #525252;
+	}
+	
+	.link-category {
+	  font-family: Roboto, sans-serif;
+	  font-size: 14px;
+	  font-weight: 400;
+	  font-stretch: normal;
+	  font-style: normal;
+	  color: #6a6a6a;
+	  float: right;
+	}
+	
+	.color-product{
+	  color: #525252!important;
+	  font-size: 16px;
+	  font-weight: 500;
+	}
+	
+	.list-produk
+	{
+	  font-family: Roboto, 'sans-serif';
+	  float: left;
+	  max-width: 350px;
+	  height: auto;
+	  background-color: #fff;
+	  border-radius: 6px;
+	  cursor:pointer;
+	}
+	.list-produk img
+	{
+	  width: 100%;
+	  max-width: 100%
+	  height: auto;
+	  display: block;
+	  padding:0;
+	  margin-bottom: 10px;
+	  border-top-right-radius: 6px;
+	  border-top-left-radius: 6px;
+	}
+	
+	.list-produk h5 {
+	margin-top: 16px;
+	margin-bottom:0;
+	padding-left:15px;
+	padding-bottom: 0;
+	}
+	
+	.list-produk p {
+	font-size:16px;
+	color: #b7b7b7;
+	padding-left:15px;
+	padding-top: 15px;
+	padding-bottom: 22px;
+	}
+	
+	.list-produk .harga-produk {
+	margin-top: 14px;
+	margin-bottom: 24px;
+	font-size: 20px;
+	color:#e93636;  
+	font-family: 'Roboto', sans-serif;  
+	}
+	
+	.list-produk .title {
+	margin-bottom: 0 !important;
+	font-size: 24px;
+	color:#525252;  
+	font-family: 'Roboto', sans-serif;  
+	}
+	
+	.list-produk .sub-title {
+	margin-top: 0 !important;
+	margin-bottom: 14px;
+	font-size: 16px;
+	color:#b7b7b7;  
+	font-family: 'Roboto', sans-serif;  
+	}
+	
+	.list-produk .title-cate {
+	margin-bottom: 0 !important;
+	font-size: 24px;
+	color:#525252;  
+	font-family: 'Roboto', sans-serif;  
+	}
+	
+	.list-produk .sub-title-cate {
+	margin-top: 0 !important;
+	margin-bottom: 14px;
+	font-size: 16px;
+	color:#b7b7b7;  
+	font-family: 'Roboto', sans-serif;  
+	}
+	
+	
+	@media (max-width: 767px){
+	  .img-fluid {
+		height: auto !important;
+	  }
+	
+	  .col-md-4 {
+		width:33.33%;
+	  }
+	  .list-produk .title {
+		font-size:16px;
+		padding-right:10px;
+	  }
+	
+	  .list-produk .sub-title {
+		font-size:12px;
+	  }
+	  
+	  .list-produk .harga-produk {
+		font-size:16px;
+		padding-right:10px;
+	  }
+	
+	  .list-produk p {
+		padding-top: 5px;
+		padding-right: 15px;
+	  }
+	
+	  .text-title {
+		font-size:16px;
+		margin-left: 15px;
+	  }
+	  
+	  .link-category {
+		font-size:12px;
+		margin-right: 15px;
+	
+	  }
+	
+	  h1 {
+		font-size:16px;
+	  }
+
+	}
+	
+	@media (max-width: 600px){
+	  .img-fluid {
+		height: auto !important;
+	  }
+	  
+	  .col-md-4 {
+		width:33.33%;
+	  }
+	  .list-produk .title {
+		font-size:12px;
+		padding-right:15px;
+	  }
+	  
+	  .list-produk .sub-title {
+		font-size:10px;
+	  }
+	
+	  .list-produk p {
+		padding-top: 5px;
+		padding-right: 15px;
+	  }
+	  
+	  .list-produk .harga-produk {
+		font-size:12px;
+		padding-right:15px;
+	  }
+	  
+	  .text-title {
+		font-size:12px;
+		margin-left: 15px;
+	  }
+	  
+	  .link-category {
+		font-size:10px;
+		margin-right: 15px;
+	
+	  }
+	
+	  h1 {
+		font-size:12px;
+	  }
+	  
+	}
+	
+	@media (max-width: 400px){
+	  .img-fluid {
+		height: auto !important;
+	  }
+	  
+	  .col-md-4 {
+		width:33.33%;
+	  }
+	  .list-produk .title {
+		font-size:10px;
+		padding-right:15px;
+	  }
+	  
+	  .list-produk .sub-title {
+		font-size:8px;
+	  }
+	
+	  .list-produk p {
+		padding-top: 5px;
+		padding-right: 15px;
+	  }
+	  
+	  .list-produk .harga-produk {
+		font-size:10px;
+		padding-right:15px;
+	  }
+	 
+	}
+
 	

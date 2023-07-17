@@ -16,6 +16,25 @@ $sql="SELECT
 include ("template/header_produk.php");?>
 <?php include("template/navbar.php"); ?>
 	<style>
+		.container_login {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+		}
+	
+		.login-separator {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-image: #fff;
+			padding: 30px 0;
+			min-height: 110px;
+			width: 100%;
+		}
+		h1.rp {
+			padding-left: 5px !important;
+			font-size: 20px !important;
+		}
 		.btn-warna{
 			width:32px;
 			height:32px;
@@ -29,21 +48,6 @@ include ("template/header_produk.php");?>
 			.carousel-indicators{
 				display:none;
 			}
-		}
-		.container_login {
-			display: flex;
-			flex-direction: row;
-			width: 100%;
-		}
-
-		.login-separator {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background-image: #fff;
-			padding: 30px 0;
-			min-height: 110px;
-			width: 100%;
 		}
 	</style>
 
