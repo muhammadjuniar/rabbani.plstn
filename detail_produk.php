@@ -128,7 +128,7 @@ include ("template/header_produk.php");?>
 				<div id="mob-produk" class="col detail-p">
 					<h3 class="margin0" style="font-size: 20px; margin-top:16px"><?php echo $nama_produk;?></h3>
 					<!-- <p class="margin0 hilang"><?php echo $persen_disc ;?></p> -->
-					<h1 class="rp" id="show_price"><?php echo number_format($harga);?></h1>
+					<h1 class="rp" id="show_price">IDR. <?php echo number_format($harga);?></h1>
 					<input type="hidden" name="harga1" id="harga1">
 					<!-- <p class="margin0">50% <del>Rp.100.000</del></p> -->
 
@@ -148,7 +148,7 @@ include ("template/header_produk.php");?>
 							?>
 							<div class="button" >
 								<input type="radio" id="<?php echo $ukuran;?>" name="size"  value="<?php echo $ukuran;?>"  />
-								<label class="btn btn-outline-secondary size" for="XS"><?php echo $ukuran; ?></label>
+								<label class="btn btn-outline-secondary size" for="<?php echo $ukuran;?>"><?php echo $ukuran; ?></label>
 							</div>
 							<?php } ?>
 
@@ -162,7 +162,7 @@ include ("template/header_produk.php");?>
 					<?php 
 					$sql="SELECT
 						    pd.warna
-						    , w.warna
+						    , w.warna_english
 						FROM
 						    produk_detail AS pd
 						    INNER JOIN warna AS w 
@@ -172,8 +172,8 @@ include ("template/header_produk.php");?>
 							while(list($kode_warna,$warna)=mysqli_fetch_array($query)){    	      	        
 					?>
 							<div class="button" >
-								<input type="radio" id="<?php echo $warna;?>" name="size"  value="<?php echo $warna;?>"  />
-								<label class="btn btn-outline-secondary size" for="XS"><?php echo $warna; ?></label>
+								<input type="radio" id="<?php echo $warna;?>" name="color"  value="<?php echo $warna;?>"  />
+								<label class="btn btn-outline-secondary size" for="<?php echo $warna;?>"><?php echo $warna; ?></label>
 							</div>
 							
 					<?php } ?>		
