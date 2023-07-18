@@ -49,7 +49,7 @@
         $query=mysqli_query($link,$sql);
         while(list($id,$nama_produk,$kategori,$images,$harga,$status)=mysqli_fetch_array($query)){    
         ?>
-        <div class="col-md-4 pt-4">
+        <div class="col-md-4 pt-2">
           <div class="list-produk">
               <a href="detail_produk.php?idp=<?php echo $id?>">
                 <img src="<?php echo $images; ?>" alt="<?php $nama_produk;?>">

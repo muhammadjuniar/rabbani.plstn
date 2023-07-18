@@ -11,16 +11,12 @@
   <!-- <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200&family=Roboto:ital,wght@0,300;0,400;1,100&display=swap" rel="stylesheet">  -->
 	
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet"> 
-  	<link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
+  	<link rel="stylesheet" href="assets/css/bootstrap_new.css" type="text/css" />
 	<link rel="stylesheet" href="assets/style.css" type="text/css" />
-	<link rel="stylesheet" href="assets/css/dark.css" type="text/css" />
 	<link rel="stylesheet" href="assets/css/font-icons.css" type="text/css" />
-	<link rel="stylesheet" href="assets/css/animate.css" type="text/css" />
-	<link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css" />
   
-	<link rel="stylesheet" href="assets/css/responsive.css" type="text/css" />
 	<link rel="stylesheet" href="assets/new_style.css" type="text/css" />
-	<link rel="stylesheet" href="assets/new_style_responsive.css" type="text/css" />
+	<link rel="stylesheet" href="assets/style_responsive.css" type="text/css" />
 		<!-- External JavaScripts
 	============================================= -->
 	<script src="assets/js/jquery.js"></script>

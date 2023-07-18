@@ -152,7 +152,7 @@ include ("template/header_produk.php");?>
 							?>
 							<div class="button" >
 								<input type="radio" id="<?php echo $ukuran;?>" name="size"  value="<?php echo $ukuran;?>"  />
-								<label class="btn btn-outline-secondary size" for="XS"><?php echo $ukuran; ?></label>
+								<label class="btn btn-outline-secondary size" for="<?php echo $ukuran;?>"><?php echo $ukuran; ?></label>
 							</div>
 							<?php } ?>
 
@@ -166,7 +166,7 @@ include ("template/header_produk.php");?>
 					<?php 
 					$sql="SELECT
 						    pd.warna
-						    , w.warna
+						    , w.warna_english
 						FROM
 						    produk_detail AS pd
 						    INNER JOIN warna AS w 
@@ -176,8 +176,8 @@ include ("template/header_produk.php");?>
 							while(list($kode_warna,$warna)=mysqli_fetch_array($query)){    	      	        
 					?>
 							<div class="button" >
-								<input type="radio" id="<?php echo $warna;?>" name="size"  value="<?php echo $warna;?>"  />
-								<label class="btn btn-outline-secondary size" for="XS"><?php echo $warna; ?></label>
+								<input type="radio" id="<?php echo $warna;?>" name="warna"  value="<?php echo $warna;?>"  />
+								<label class="btn btn-outline-secondary size" for="<?php echo $warna;?>"><?php echo $warna; ?></label>
 							</div>
 							
 					<?php } ?>		

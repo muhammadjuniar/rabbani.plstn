@@ -53,7 +53,7 @@
         <div class="col-md-4 pt-2">
           <div class="list-produk">
             <a href="category.php?cate=<?php echo $id;?>">
-                <img src="assets/images/<?php echo $images;?>" alt="<?php echo $images;?>">
+                <img style="width: 350px !important;" src="assets/images/<?php echo $images;?>" alt="<?php echo $images;?>">
     
                 <h5 class="title"><?php echo $nama_kategori?></h5>
                 <p class="sub-title">For Your All Activity</p>
@@ -65,7 +65,7 @@
 
 
     </div>
-    <div id="mobile" class="container mt-4" >
+    <div id="mobile" class="container" >
 
       <h1 class="pt-4">New Arrivals</h1>
       <div class="row">
