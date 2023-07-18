@@ -41,7 +41,7 @@
         <div class="col-md-4 pt-2">
           <div class="list-produk">
             <a href="category.php?cate=<?php echo $id;?>">
-                <img style="width: 350px !important;" src="assets/images/<?php echo $images;?>" alt="<?php echo $images;?>">
+                <img style="width: 400px !important;" src="assets/images/<?php echo $images;?>" alt="<?php echo $images;?>">
     
                 <h5 class="title"><?php echo $nama_kategori?></h5>
                 <p class="sub-title">For Your All Activity</p>
