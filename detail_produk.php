@@ -70,33 +70,28 @@ include ("template/header_produk.php");?>
 				<div class="col-md-6" >
 					<div id="indikator" class="carousel slide" data-ride="carousel" data-interval="false">
 						<div class="carousel-inner">
-							<div class="carousel-item active">
+							<!-- <div class="carousel-item active">
 								<img id="img-preview" src="<?php echo $images;?>">
-							</div>
-							<!-- <?php if ($image1!=''){?>
+							</div> -->
+							<?php if ($images!=''){?>
 								<div class="carousel-item active">
-									<img id="img-preview" src="assets/foto_produk/<?php echo $image1; ?>">
+									<img id="img-preview" src="<?php echo $images;?>">
 								</div>
 							<?php }
 
-							if ($image2!=''){?>
+							if ($images2!=''){?>
 								<div class="carousel-item">
-									<img id="img-preview" src="assets/foto_produk/<?php echo $image2; ?>">
+									<img id="img-preview" src="<?php echo $images2;?>">
 								</div>
 							<?php }
-							if ($image3!=''){?>
+							if ($images3!=''){?>
 								<div class="carousel-item">
-									<img id="img-preview" src="assets/foto_produk/<?php echo $image3; ?>">
+									<img id="img-preview" src="<?php echo $images3;?>">
 								</div>
-							<?php }
-							if ($image4!=''){?>
-								<div class="carousel-item">
-									<img id="img-preview" src="assets/foto_produk/<?php echo $image4; ?>">
-								</div>
-							<?php }?> -->
+							<?php }?>
 						</div>
 						<ol class="carousel-indicators ">
-							<li data-target="#indikator" data-slide-to="0" class="active">
+							<!-- <li data-target="#indikator" data-slide-to="0" class="active">
 								<img class="img-indikator" src="<?php echo $images?>">
 							</li>
 							
@@ -112,20 +107,17 @@ include ("template/header_produk.php");?>
 							<li data-target="#indikator" data-slide-to="0" class="active">
 								<img class="img-indikator" src="<?php echo $images3?>">
 							</li>
-							<?php } ?>
-							<!-- <?php if ($image1!=''){?>
-								<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator" src="assets/foto_produk/<?= $image1 ?>">-</li>
+							<?php } ?> -->
+							<?php if ($images!=''){?>
+								<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator" src="<?= $images ?>"></li>
 							<?php }
 
-							if ($image2!=''){?>
-								<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator" src="assets/foto_produk/<?= $image2 ?>">-</li>
+							if ($images2!=''){?>
+								<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator" src="<?= $images2 ?>"></li>
 							<?php }
-							if ($image3!=''){?>
-								<li data-target="#indikator" data-slide-to="2"><img class="img-indikator" src="assets/foto_produk/<?= $image3 ?>">-</li>
-							<?php }
-							if ($image4!=''){?>
-								<li data-target="#indikator" data-slide-to="3"><img class="img-indikator" src="assets/foto_produk/<?= $image4 ?>">-</li>
-							<?php }?> -->
+							if ($images3!=''){?>
+								<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator" src="<?= $images3 ?>"></li>
+							<?php }?>
 							
 							
 							
@@ -149,7 +141,7 @@ include ("template/header_produk.php");?>
 								    produk_detail AS pd
 								    INNER JOIN ukuran AS u 
 								        ON (pd.ukuran = u.kode_ukuran) WHERE pd.id_produk='$idp'
-								        GROUP BY u.ukuran";
+								        GROUP BY u.ukuran ORDER BY u.kode_ukuran ASC";
 							 $query=mysqli_query($link,$sql);	
 							 //echo $sql;        
 							while(list($ukuran)=mysqli_fetch_array($query)){    	        
@@ -174,7 +166,7 @@ include ("template/header_produk.php");?>
 						FROM
 						    produk_detail AS pd
 						    INNER JOIN warna AS w 
-						        ON (pd.warna = w.kode_warna)WHERE pd.id_produk='$idp' group by pd.warna";
+						        ON (pd.warna = w.kode_warna)WHERE pd.id_produk='$idp' GROUP BY pd.warna ORDER BY w.warna_english ASC";
 					 $query=mysqli_query($link,$sql);	
 							 //echo $sql;        
 							while(list($kode_warna,$warna)=mysqli_fetch_array($query)){    	      	        
