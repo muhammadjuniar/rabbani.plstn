@@ -18,19 +18,7 @@
 	}
   
 </style>
-<section id="slider" class="slider-element boxed-slider" style="background-image: url('assets/images/img_bg.jpg')">
-  <div id="mobile-slider" class="container clearfix box-slide">
-      <img src="assets/images/img_banner.png" class="img-fluid" alt="Responsive image">
-      <div class="row">
-      <div class="col" style="margin-top:20px;">
-        <h2 class="text-title">Palestine Series</h2>
-      </div>
-      <div class="col" style="margin-top:20px;">
-        <a href="category.php?cate=all" class="link-category">Show all</a>
-      </div>
-      </div>
-  </div>
-</section>
+<?php include "slider.php"; ?>
 <section id="content" style="margin-bottom: 0px;background: #f5f5f5; ">
   <div class="container-fluid" style="background-color:#f5f5f5">
 

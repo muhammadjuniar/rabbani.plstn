@@ -17,27 +17,20 @@
 		width: 100%;
 	}
 </style>
-<section id="slider" class="slider-element boxed-slider" style="background-image: url('assets/images/img_bg.jpg')">
-  <div id="mobile-slider" class="container clearfix box-slide">
-      <img src="assets/images/img_banner.png" class="img-fluid" alt="Responsive image">
-      <div class="row">
-      <div class="col" style="margin-top:20px;">
-        <h2 class="text-title">Palestine Series / <?php echo ucfirst($_GET['cate']) ?></h2>
-      </div>
-      <div class="col" style="margin-top:20px;">
-        <a class="link-category"><?php echo ucfirst($_GET['cate']) ?></a>
-      </div>
-      </div>
-  </div>
-</section>
+<?php include "slider.php"; ?>
 <section id="content" style="margin-bottom: 0px;background: #f5f5f5; ">
   <div class="container-fluid" style="background-color:#f5f5f5">
 
     
     <div id="mobile" class="container" >
 
-      <div class="row pt-4">
+      <div class="row pt-2">
         <?php 
+        if($_GET['cate'] == 'all'){
+          $filter_cate = "";
+        }else{
+          $filter_cate = "WHERE kategori='$_GET[cate]'";
+        }
         $sql="SELECT
                   id,
                   nama_produk,
@@ -45,11 +38,11 @@
                   foto,
                   harga_total,
                   `status`
-                FROM produk where kategori='$_GET[cate]'";
+                FROM produk $filter_cate";
         $query=mysqli_query($link,$sql);
         while(list($id,$nama_produk,$kategori,$images,$harga,$status)=mysqli_fetch_array($query)){    
         ?>
-        <div class="col-md-4 pt-2">
+        <div class="col-md-4 pt-4">
           <div class="list-produk">
               <a href="detail_produk.php?idp=<?php echo $id?>">
                 <img src="<?php echo $images; ?>" alt="<?php $nama_produk;?>">

@@ -16,6 +16,10 @@ $sql="SELECT
 include ("template/header_produk.php");?>
 <?php include("template/navbar.php"); ?>
 	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+		*{
+			font-family: Roboto, "sans-serif";
+		}
 		.container_login {
 			display: flex;
 			flex-direction: row;

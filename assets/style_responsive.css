@@ -973,6 +973,7 @@ h4.keranjang-nama{
   	h1 {
 		font-family: Roboto, "sans-serif";
 		/* padding-left: 15px; */
+		font-size: 24px;
 	}
 	
 	.text-title{
@@ -1078,8 +1079,14 @@ h4.keranjang-nama{
 	color:#b7b7b7;  
 	font-family: 'Roboto', sans-serif;  
 	}
+
 	
-	@media (min-width: 768px){
+	.row {
+		margin-right: -5px !important;
+		margin-left: -5px !important;
+	  }
+	
+	@media (min-width: 768px) and (max-width: 1200px){
 		.img-fluid {
 		  height: auto !important;
 		}
