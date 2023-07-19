@@ -44,6 +44,12 @@ include ("template/header_produk.php");?>
 			height:32px;
 			border: 1px solid #8d8d8d;
 		}
+		.btn {
+			border-radius: 6px;
+		}
+		.btn:hover {
+			border: 1px solid #8d8d8d;
+		}
 		@media (max-width: 767px){
 			
 			.img-indikator{
@@ -51,6 +57,11 @@ include ("template/header_produk.php");?>
 			}
 			.carousel-indicators{
 				display:none;
+			}
+		}
+		@media (max-width: 360px){
+			.col-3{
+				margin-left: -10px !important;
 			}
 		}
 	</style>
@@ -133,7 +144,7 @@ include ("template/header_produk.php");?>
 					<!-- <p class="margin0">50% <del>Rp.100.000</del></p> -->
 
 					<p class="pilih">Size Available</p>
-					<div id="size_choise">
+					<div id="size_choise" class="mb-3">
 							<?php 
 							$sql="SELECT
 								    u.ukuran
@@ -147,8 +158,7 @@ include ("template/header_produk.php");?>
 							while(list($ukuran)=mysqli_fetch_array($query)){    	        
 							?>
 							<div class="button" >
-								<input type="radio" id="<?php echo $ukuran;?>" name="size"  value="<?php echo $ukuran;?>"  />
-								<label class="btn btn-outline-secondary size" for="<?php echo $ukuran;?>"><?php echo $ukuran; ?></label>
+								<label class="btn" style="margin-top:5px;"><?php echo $ukuran; ?></label>
 							</div>
 							<?php } ?>
 
@@ -172,8 +182,7 @@ include ("template/header_produk.php");?>
 							while(list($kode_warna,$warna)=mysqli_fetch_array($query)){    	      	        
 					?>
 							<div class="button" >
-								<input type="radio" id="<?php echo $warna;?>" name="warna"  value="<?php echo $warna;?>"  />
-								<label class="btn btn-outline-secondary size" for="<?php echo $warna;?>"><?php echo $warna; ?></label>
+								<label class="btn" style="margin-top:5px;"><?php echo $warna;?></label>
 							</div>
 							
 					<?php } ?>		
@@ -222,7 +231,7 @@ include ("template/header_produk.php");?>
 					<div class="col">: Camila</div> -->
 					</div>
 					<div class="row mt-2 mb-2">
-					<div class="col-2">Category</div>
+					<div class="col-3">Category</div>
 					<div class="col">: <?php echo $kategori;?></div>
 					</div>
 					<p style="margin-bottom: 0px !important;">
