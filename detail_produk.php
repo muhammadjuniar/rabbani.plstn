@@ -1,5 +1,6 @@
 <?php 
 include"template/connect_main.php";
+$root="/var/www/rabbani.plstn";
 $idp=$_GET['idp'];
 $sql="SELECT
                   id,
@@ -122,19 +123,19 @@ include ("template/header_produk.php");?>
 							<!-- <div class="carousel-item active">
 								<img id="img-preview" src="<?php echo $images;?>">
 							</div> -->
-							<?php if ($images!=''){?>
+							<?php if ($images!='' && file_exists("$root/$images")){?>
 								<div class="carousel-item active">
 									<img id="img-preview" src="<?php echo $images;?>">
 								</div>
 							<?php }
 
-							if ($images2!='' && file_exists("/var/www/rabbani.plstn/$images2")){
+							if ($images2!='' && file_exists("$root/$images2")){
 								?>
 								<div class="carousel-item">
 									<img id="img-preview" src="<?php echo $images2;?>">
 								</div>
 							<?php }
-							if ($images3!=''){?>
+							if ($images3!='' && file_exists("$root/$images3")){?>
 								<div class="carousel-item">
 									<img id="img-preview" src="<?php echo $images3;?>">
 								</div>
@@ -158,20 +159,20 @@ include ("template/header_produk.php");?>
 								<img class="img-indikator" src="<?php echo $images3?>">
 							</li>
 							<?php } ?> -->
-							<?php if ($images!=''){?>
+							<?php if ($images!='' && file_exists("$root/$images")){?>
 								<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator" src="<?= $images ?>"></li>
 							<?php }
-							if ($images2!=''){?>
+							if ($images2!='' && file_exists("$root/$images2")){?>
 								<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator" src="<?= $images2 ?>"></li>
 							<?php }
-							if ($images3!=''){?>
+							if ($images3!='' && file_exists("$root/$images3")){?>
 								<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator" src="<?= $images3 ?>"></li>
 							<?php }?>
 							
 						</ol>
 					</div>
 				</div>
-			
+			<?php echo "$root/$images2" ?>
 				<div id="mob-produk" class="col detail-p">
 					<h3 class="margin0" style="font-size: 20px; margin-top:16px"><?php echo $nama_produk;?></h3>
 					<!-- <p class="margin0 hilang"><?php echo $persen_disc ;?></p> -->
