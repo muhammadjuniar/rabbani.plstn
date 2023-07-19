@@ -172,7 +172,7 @@ include ("template/header_produk.php");?>
 						</ol>
 					</div>
 				</div>
-			<?php echo "$root/$images2" ?>
+				
 				<div id="mob-produk" class="col detail-p">
 					<h3 class="margin0" style="font-size: 20px; margin-top:16px"><?php echo $nama_produk;?></h3>
 					<!-- <p class="margin0 hilang"><?php echo $persen_disc ;?></p> -->
