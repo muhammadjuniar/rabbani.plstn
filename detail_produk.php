@@ -8,11 +8,12 @@ $sql="SELECT
                   foto,
                   foto2,
                   foto3,
+                  deskripsi,
                   harga_total,
                   `status`
                 FROM produk where id='$idp'";
         $query=mysqli_query($link,$sql);
-        list($id,$nama_produk,$kategori,$images,$images2,$images3,$harga,$status)=mysqli_fetch_array($query);	
+        list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);	
 include ("template/header_produk.php");?>
 <?php include("template/navbar.php"); ?>
 	<style>
@@ -241,7 +242,7 @@ include ("template/header_produk.php");?>
 					<div class="col">: <?php echo $kategori;?></div>
 					</div>
 					<p style="margin-bottom: 0px !important;">
-						<?php echo $nama_produk;?>
+						<?php echo $deskripsi;?>
 					</p>
 				</div>
 			</div>
