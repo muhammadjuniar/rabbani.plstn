@@ -71,6 +71,7 @@ include ("template/header_produk.php");?>
 		h1.rp {
 			padding-left: 5px !important;
 			font-size: 20px !important;
+			color: #e93636 !important;
 		}
 		.btn-warna{
 			width:32px;
