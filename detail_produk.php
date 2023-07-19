@@ -149,7 +149,7 @@ include ("template/header_produk.php");?>
 					<input type="hidden" name="harga1" id="harga1">
 					<!-- <p class="margin0">50% <del>Rp.100.000</del></p> -->
 
-					<p class="pilih">Size Available</p>
+					<!-- <p class="pilih">Size Available</p>
 					<div id="size_choise" class="mb-3">
 							<?php 
 							$sql="SELECT
@@ -171,7 +171,7 @@ include ("template/header_produk.php");?>
 					</div>
 					<div id="tampil_ukuran">
 						
-					</div>
+					</div> -->
 					
 					<p class="pilih">Color Available</p>
 					<div>
