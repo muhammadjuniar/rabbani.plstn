@@ -50,6 +50,12 @@ include ("template/header_produk.php");?>
 		.btn:hover {
 			border: 1px solid #8d8d8d;
 		}
+		.button-color {
+			width:40px;
+			height:40px;
+			border:1px solid #ccc !important;
+			margin-top: 5px !important;
+		}
 		@media (max-width: 767px){
 			
 			.img-indikator{
@@ -58,14 +64,14 @@ include ("template/header_produk.php");?>
 			.carousel-indicators{
 				display:none;
 			}
-		}
-		@media (max-width: 360px){
-			.col-3{
-				margin-left: -10px !important;
+			.button-color {
+				width:35px;
+				height:35px;
 			}
 		}
 	</style>
 
+<?php require_once "color_convert.php"; ?>
 <section id="content" style="margin-bottom: 0px; ">
 
 	<div class="content-wrap" style="background-image: url('assets/images/img_bg.jpg') !important">
@@ -182,7 +188,7 @@ include ("template/header_produk.php");?>
 							while(list($kode_warna,$warna)=mysqli_fetch_array($query)){    	      	        
 					?>
 							<div class="button" >
-								<label class="btn" style="margin-top:5px;"><?php echo $warna;?></label>
+								<label class="btn button-color" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>"></label>
 							</div>
 							
 					<?php } ?>		
@@ -231,7 +237,7 @@ include ("template/header_produk.php");?>
 					<div class="col">: Camila</div> -->
 					</div>
 					<div class="row mt-2 mb-2">
-					<div class="col-3">Category</div>
+					<div class="col-2">Category</div>
 					<div class="col">: <?php echo $kategori;?></div>
 					</div>
 					<p style="margin-bottom: 0px !important;">
