@@ -128,7 +128,8 @@ include ("template/header_produk.php");?>
 								</div>
 							<?php }
 
-							if ($images2!=''){?>
+							if ($images2!='' && file_exists("/var/www/rabbani.plstn/$images2")){
+								?>
 								<div class="carousel-item">
 									<img id="img-preview" src="<?php echo $images2;?>">
 								</div>
@@ -160,15 +161,12 @@ include ("template/header_produk.php");?>
 							<?php if ($images!=''){?>
 								<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator" src="<?= $images ?>"></li>
 							<?php }
-
 							if ($images2!=''){?>
 								<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator" src="<?= $images2 ?>"></li>
 							<?php }
 							if ($images3!=''){?>
 								<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator" src="<?= $images3 ?>"></li>
 							<?php }?>
-							
-							
 							
 						</ol>
 					</div>
