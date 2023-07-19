@@ -14,6 +14,37 @@ $sql="SELECT
                 FROM produk where id='$idp'";
         $query=mysqli_query($link,$sql);
         list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);	
+if(isset($_GET['color'])){
+	$color = $_GET['color'];
+	$sql="SELECT
+                  p.id,
+                  p.nama_produk,
+                  p.kategori,
+                  pw.gambar1,
+                  pw.gambar2,
+                  pw.gambar3,
+                  p.deskripsi,
+                  p.harga_total,
+                  p.`status`
+                FROM produk p LEFT JOIN produk_warna pw ON p.id=pw.id where p.id='$idp' AND pw.kode_warna='$color'";
+        $query=mysqli_query($link,$sql);
+        list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
+
+} else {
+	$sql="SELECT
+                  id,
+                  nama_produk,
+                  kategori,
+                  foto,
+                  foto2,
+                  foto3,
+                  deskripsi,
+                  harga_total,
+                  `status`
+                FROM produk where id='$idp'";
+        $query=mysqli_query($link,$sql);
+        list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
+}
 include ("template/header_produk.php");?>
 <?php include("template/navbar.php"); ?>
 	<style>
@@ -178,19 +209,23 @@ include ("template/header_produk.php");?>
 					<div>
 					<?php 
 					$sql="SELECT
-						    pd.warna
-						    , w.warna_english
-						FROM
-						    produk_detail AS pd
-						    INNER JOIN warna AS w 
-						        ON (pd.warna = w.kode_warna)WHERE pd.id_produk='$idp' GROUP BY pd.warna ORDER BY w.warna_english ASC";
+						pw.kode_warna
+						, w.warna_english
+					FROM
+						produk_warna AS pw
+					INNER JOIN produk AS p 
+						ON (pw.id = p.id)
+					INNER JOIN warna AS w
+						ON (pw.kode_warna = w.kode_warna) WHERE p.id='$idp' ORDER BY w.warna_english ASC";
 					 $query=mysqli_query($link,$sql);	
-							 //echo $sql;        
+							//  echo $sql;        
 							while(list($kode_warna,$warna)=mysqli_fetch_array($query)){    	      	        
 					?>
+							<a href="detail_produk.php?idp=<?php echo $_GET['idp']?>&color=<?php echo $kode_warna; ?>">
 							<div class="button" >
-								<label class="btn button-color" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>"></label>
+								<label type="submit" value="submit" class="btn button-color" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>"></label>
 							</div>
+							</a>
 							
 					<?php } ?>		
 							<p>&nbsp;</p>
