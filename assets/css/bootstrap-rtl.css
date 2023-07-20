@@ -579,6 +579,16 @@ th { text-align: right; }
 	left: auto;
 }
 
+.carousel-indicators-inside li::before {
+	right: 0;
+	left: auto;
+}
+
+.carousel-indicators-inside li::after {
+	right: 0;
+	left: auto;
+}
+
 .embed-responsive .embed-responsive-item,
 .embed-responsive iframe,
 .embed-responsive embed,

@@ -394,6 +394,16 @@ p.harga-per-paket {
 	margin-left: 0px !important;
 
 }
+
+.carousel-indicators-inside li {
+	text-indent: 0px !important;
+	cursor: pointer;
+	width: 24px !important;
+	border-radius: 50%;
+	/* padding-top:-50px !important; */
+
+
+}
 /* .carousel-indicators li img {
 box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 } */
@@ -825,6 +835,23 @@ h4.keranjang-nama{
 		margin-right:0% !important
 	}
 	.carousel-indicators li {
+		text-indent: 0px !important;
+		cursor: pointer;
+		width: 110px !important;
+		/* padding-top:-50px !important; */
+	
+		margin-top:-5px !important;
+		margin-bottom:70px !important;
+		margin-right: 4px !important;
+		margin-left: 4px !important;
+
+	}
+	
+	.carousel-indicators-inside{
+		margin-left:0% !important;
+		margin-right:0% !important
+	}
+	.carousel-indicators-inside li {
 		text-indent: 0px !important;
 		cursor: pointer;
 		width: 110px !important;

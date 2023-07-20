@@ -1,6 +1,7 @@
 <?php 
 include"template/connect_main.php";
-$root="/var/www/rabbani.plstn";
+$root="/var/www/rabbani.plstn/";
+// $root="";
 $idp=$_GET['idp'];
 $sql="SELECT
                   id,
@@ -90,6 +91,7 @@ include ("template/header_produk.php");?>
 			border:1px solid #ccc !important;
 			margin-top: 5px !important;
 		}
+		
 		@media (max-width: 767px){
 			
 			.img-indikator{
@@ -120,29 +122,41 @@ include ("template/header_produk.php");?>
 			<div class="row">
 				<div class="col-md-6" >
 					<div id="indikator" class="carousel slide" data-ride="carousel" data-interval="false">
+						
+						<ol class="carousel-indicators-inside">
+							<?php if ($images!='' && file_exists("$root$images")){?>
+							<li data-target="#indikator" style="background:#FFF" data-slide-to="0" class="active"></li>
+							<?php }
+							if ($images2!='' && file_exists("$root$images2")){?>
+								<li data-target="#indikator" style="background:#FFF" data-slide-to="1"></li>
+							<?php }
+							if ($images3!='' && file_exists("$root$images3")){?>
+								<li data-target="#indikator" style="background:#FFF" data-slide-to="2"></li>
+							<?php }?>
+						</ol>
 						<div class="carousel-inner">
 							<!-- <div class="carousel-item active">
 								<img id="img-preview" src="<?php echo $images;?>">
 							</div> -->
-							<?php if ($images!='' && file_exists("$root/$images")){?>
+							<?php if ($images!='' && file_exists("$root$images")){?>
 								<div class="carousel-item active">
 									<img id="img-preview" src="<?php echo $images;?>">
 								</div>
 							<?php }
 
-							if ($images2!='' && file_exists("$root/$images2")){
+							if ($images2!='' && file_exists("$root$images2")){
 								?>
 								<div class="carousel-item">
 									<img id="img-preview" src="<?php echo $images2;?>">
 								</div>
 							<?php }
-							if ($images3!='' && file_exists("$root/$images3")){?>
+							if ($images3!='' && file_exists("$root$images3")){?>
 								<div class="carousel-item">
 									<img id="img-preview" src="<?php echo $images3;?>">
 								</div>
 							<?php }?>
 						</div>
-						<ol class="carousel-indicators ">
+						<ol class="carousel-indicators">
 							<!-- <li data-target="#indikator" data-slide-to="0" class="active">
 								<img class="img-indikator" src="<?php echo $images?>">
 							</li>
@@ -160,13 +174,13 @@ include ("template/header_produk.php");?>
 								<img class="img-indikator" src="<?php echo $images3?>">
 							</li>
 							<?php } ?> -->
-							<?php if ($images!='' && file_exists("$root/$images")){?>
+							<?php if ($images!='' && file_exists("$root$images")){?>
 								<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator" src="<?= $images ?>"></li>
 							<?php }
-							if ($images2!='' && file_exists("$root/$images2")){?>
+							if ($images2!='' && file_exists("$root$images2")){?>
 								<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator" src="<?= $images2 ?>"></li>
 							<?php }
-							if ($images3!='' && file_exists("$root/$images3")){?>
+							if ($images3!='' && file_exists("$root$images3")){?>
 								<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator" src="<?= $images3 ?>"></li>
 							<?php }?>
 							
