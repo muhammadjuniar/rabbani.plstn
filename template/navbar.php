@@ -71,6 +71,20 @@
         margin-right:8px
     }
 
+    @media (min-width: 1540px){
+        .nav {
+            background-image:unset;
+            background-color:#E93636;
+        }
+        .nav-category {
+        color: #FFFFFF;
+        }
+
+        .nav-contact {
+            color: #FFFFFF;
+        }
+    }
+
     @media (max-width: 767px){
         .brand{
             padding-top:30px; margin-bottom:-70px;

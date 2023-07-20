@@ -1,7 +1,7 @@
 <?php 
 include"template/connect_main.php";
-// $root="/var/www/rabbani.plstn/";
-$root="";
+$root="/var/www/rabbani.plstn/";
+// $root="";
 
 $idp=$_GET['idp'];
 
