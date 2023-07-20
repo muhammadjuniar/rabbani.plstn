@@ -398,10 +398,11 @@ p.harga-per-paket {
 .carousel-indicators-inside li {
 	text-indent: 0px !important;
 	cursor: pointer;
-	width: 24px !important;
+	max-width: 14px !important;
+	max-height: 14px !important;
 	border-radius: 50%;
 	/* padding-top:-50px !important; */
-
+	margin-bottom: 5px !important;
 
 }
 /* .carousel-indicators li img {

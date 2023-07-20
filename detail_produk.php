@@ -1,7 +1,7 @@
 <?php 
 include"template/connect_main.php";
-$root="/var/www/rabbani.plstn/";
-// $root="";
+// $root="/var/www/rabbani.plstn/";
+$root="";
 $idp=$_GET['idp'];
 $sql="SELECT
                   id,
@@ -92,6 +92,11 @@ include ("template/header_produk.php");?>
 			margin-top: 5px !important;
 		}
 		
+		@media (min-width: 767px){
+			.carousel-indicators-inside{
+				display:none;
+			}
+		}
 		@media (max-width: 767px){
 			
 			.img-indikator{
@@ -103,6 +108,18 @@ include ("template/header_produk.php");?>
 			.button-color {
 				width:35px;
 				height:35px;
+			}
+		}
+
+		@media (max-width: 411px) {
+			.carousel-indicators-inside{
+				position: absolute !important;
+				margin-bottom:-10% !important;
+			}
+			.carousel-indicators-inside li {
+				max-width: 12px !important;
+				max-height: 12px !important;
+
 			}
 		}
 	</style>
