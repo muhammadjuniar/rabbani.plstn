@@ -1,8 +1,19 @@
 <?php 
 include"template/connect_main.php";
-$root="/var/www/rabbani.plstn/";
-// $root="";
+// $root="/var/www/rabbani.plstn/";
+$root="";
+
 $idp=$_GET['idp'];
+
+$sanitized_prodid = mysqli_real_escape_string($link, $idp);
+
+$queryCekId = sprintf("SELECT id FROM produk WHERE id='". $sanitized_prodid . "'",
+mysqli_real_escape_string($link, $idp));
+$result = mysqli_query($link, $queryCekId);
+if(mysqli_num_rows($result) < 1) {
+	header('Location: index.php');
+}
+
 $sql="SELECT
                   id,
                   nama_produk,
@@ -173,6 +184,12 @@ include ("template/header_produk.php");?>
 								</div>
 							<?php }?>
 						</div>
+						<a class="carousel-control-prev" href="#indikator" data-slide="prev">
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#indikator" data-slide="next">
+							<span class="sr-only">Next</span>
+						</a>
 						<ol class="carousel-indicators">
 							<!-- <li data-target="#indikator" data-slide-to="0" class="active">
 								<img class="img-indikator" src="<?php echo $images?>">
