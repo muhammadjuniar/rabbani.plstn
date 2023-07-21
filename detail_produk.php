@@ -1,7 +1,7 @@
 <?php 
 include"template/connect_main.php";
-$root="/var/www/rabbani.plstn/";
-// $root="";
+// $root="/var/www/rabbani.plstn/";
+$root="";
 
 $idp=$_GET['idp'];
 
@@ -13,24 +13,7 @@ $result = mysqli_query($link, $queryCekId);
 if(mysqli_num_rows($result) < 1) {
 	header('Location: index.php');
 }
-	
-// if(isset($_GET['color'])){
-// 	$color = $_GET['color'];
-// 	$sql="SELECT
-//                   p.id,
-//                   p.nama_produk,
-//                   p.kategori,
-//                   pw.gambar1,
-//                   pw.gambar2,
-//                   pw.gambar3,
-//                   p.deskripsi,
-//                   p.harga_total,
-//                   p.`status`
-//                 FROM produk p LEFT JOIN produk_warna pw ON p.id=pw.id where p.id='$idp' AND pw.kode_warna='$color'";
-//         $query=mysqli_query($link,$sql);
-//         list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
 
-// } else {
 	$sql="SELECT
                   id,
                   nama_produk,
@@ -44,7 +27,7 @@ if(mysqli_num_rows($result) < 1) {
                 FROM produk where id='$idp'";
         $query=mysqli_query($link,$sql);
         list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
-// }
+
 include ("template/header_produk.php");?>
 <?php include("template/navbar.php"); ?>
 	<style>
@@ -90,6 +73,15 @@ include ("template/header_produk.php");?>
 			border:1px solid #ccc !important;
 			/* margin-top: 5px !important; */
 		}
+		.img-preview{
+			border-radius: 8px !important;
+		}
+		.img-indikator{
+			border-radius: 8px !important;
+		}
+		.judul-produk{
+			font-size: 20px;
+		}
 		
 		@media (min-width: 767px){
 			.carousel-indicators-inside{
@@ -108,6 +100,9 @@ include ("template/header_produk.php");?>
 				width:35px;
 				height:35px;
 			}
+			.judul-produk{
+				margin-top:16px !important;
+			}
 		}
 
 		@media (max-width: 411px) {
@@ -119,6 +114,9 @@ include ("template/header_produk.php");?>
 				max-width: 12px !important;
 				max-height: 12px !important;
 
+			}
+			.judul-produk{
+				margin-top:16px !important;
 			}
 		}
 	</style>
@@ -154,19 +152,19 @@ include ("template/header_produk.php");?>
 							<div class="carousel-inner">
 								<?php if ($images!='' && file_exists("$root$images")){?>
 									<div class="carousel-item active">
-										<img id="img-preview" src="<?php echo $images;?>">
+										<img id="img-preview" class="img-preview" src="<?php echo $images;?>">
 									</div>
 								<?php }
 
 								if ($images2!='' && file_exists("$root$images2")){
 									?>
 									<div class="carousel-item">
-										<img id="img-preview" src="<?php echo $images2;?>">
+										<img id="img-preview" class="img-preview" src="<?php echo $images2;?>">
 									</div>
 								<?php }
 								if ($images3!='' && file_exists("$root$images3")){?>
 									<div class="carousel-item">
-										<img id="img-preview" src="<?php echo $images3;?>">
+										<img id="img-preview" class="img-preview" src="<?php echo $images3;?>">
 									</div>
 								<?php }?>
 							</div>
@@ -193,7 +191,7 @@ include ("template/header_produk.php");?>
 				</div>
 				
 				<div id="mob-produk" class="col detail-p">
-					<h3 class="margin0" style="font-size: 20px; margin-top:16px"><?php echo $nama_produk;?></h3>
+					<h3 class="margin0 judul-produk" ><?php echo $nama_produk;?></h3>
 					<!-- <p class="margin0 hilang"><?php echo $persen_disc ;?></p> -->
 					<h1 class="rp" id="show_price">IDR. <?php echo number_format($harga);?></h1>
 					<input type="hidden" name="harga1" id="harga1">
@@ -295,14 +293,14 @@ include ("template/header_produk.php");?>
 <script>
 	function changeColor(id,kw,root) {
 		var id_prod = id;
-		var kw = kw;
-		var root = root;
+		var kw 		= kw;
+		var root 	= root;
 		$.ajax({
 		url: 'change_produk_per_warna.php',
 		data: {
-			"id_prod"    : id_prod,
-			"kw"         : kw,
-			"root"       : root,
+			"id_prod"	: id_prod,
+			"kw"     	: kw,
+			"root"   	: root,
 			},
 			success: function(data) {
 

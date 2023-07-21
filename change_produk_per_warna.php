@@ -33,19 +33,19 @@ list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$sta
 		<div class="carousel-inner">
 			<?php if ($images!='' && file_exists("$root$images")){?>
 				<div class="carousel-item active">
-					<img id="img-preview" src="<?php echo $images;?>">
+					<img id="img-preview" class="img-preview" src="<?php echo $images;?>">
 				</div>
 			<?php }
 
 			if ($images2!='' && file_exists("$root$images2")){
 				?>
 				<div class="carousel-item">
-					<img id="img-preview" src="<?php echo $images2;?>">
+					<img id="img-preview" class="img-preview" src="<?php echo $images2;?>">
 				</div>
 			<?php }
 			if ($images3!='' && file_exists("$root$images3")){?>
 				<div class="carousel-item">
-					<img id="img-preview" src="<?php echo $images3;?>">
+					<img id="img-preview" class="img-preview" src="<?php echo $images3;?>">
 				</div>
 			<?php }?>
 		</div>
