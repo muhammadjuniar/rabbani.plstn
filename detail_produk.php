@@ -13,37 +13,24 @@ $result = mysqli_query($link, $queryCekId);
 if(mysqli_num_rows($result) < 1) {
 	header('Location: index.php');
 }
+	
+// if(isset($_GET['color'])){
+// 	$color = $_GET['color'];
+// 	$sql="SELECT
+//                   p.id,
+//                   p.nama_produk,
+//                   p.kategori,
+//                   pw.gambar1,
+//                   pw.gambar2,
+//                   pw.gambar3,
+//                   p.deskripsi,
+//                   p.harga_total,
+//                   p.`status`
+//                 FROM produk p LEFT JOIN produk_warna pw ON p.id=pw.id where p.id='$idp' AND pw.kode_warna='$color'";
+//         $query=mysqli_query($link,$sql);
+//         list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
 
-$sql="SELECT
-                  id,
-                  nama_produk,
-                  kategori,
-                  foto,
-                  foto2,
-                  foto3,
-                  deskripsi,
-                  harga_total,
-                  `status`
-                FROM produk where id='$idp'";
-        $query=mysqli_query($link,$sql);
-        list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);	
-if(isset($_GET['color'])){
-	$color = $_GET['color'];
-	$sql="SELECT
-                  p.id,
-                  p.nama_produk,
-                  p.kategori,
-                  pw.gambar1,
-                  pw.gambar2,
-                  pw.gambar3,
-                  p.deskripsi,
-                  p.harga_total,
-                  p.`status`
-                FROM produk p LEFT JOIN produk_warna pw ON p.id=pw.id where p.id='$idp' AND pw.kode_warna='$color'";
-        $query=mysqli_query($link,$sql);
-        list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
-
-} else {
+// } else {
 	$sql="SELECT
                   id,
                   nama_produk,
@@ -57,7 +44,7 @@ if(isset($_GET['color'])){
                 FROM produk where id='$idp'";
         $query=mysqli_query($link,$sql);
         list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
-}
+// }
 include ("template/header_produk.php");?>
 <?php include("template/navbar.php"); ?>
 	<style>
@@ -81,6 +68,7 @@ include ("template/header_produk.php");?>
 			width: 100%;
 		}
 		h1.rp {
+			margin-top: 8px;
 			padding-left: 5px !important;
 			font-size: 20px !important;
 			color: #e93636 !important;
@@ -100,7 +88,7 @@ include ("template/header_produk.php");?>
 			width:40px;
 			height:40px;
 			border:1px solid #ccc !important;
-			margin-top: 5px !important;
+			/* margin-top: 5px !important; */
 		}
 		
 		@media (min-width: 767px){
@@ -149,76 +137,58 @@ include ("template/header_produk.php");?>
 			============================================= -->
 			<div class="row">
 				<div class="col-md-6" >
-					<div id="indikator" class="carousel slide" data-ride="carousel" data-interval="false">
-						
-						<ol class="carousel-indicators-inside">
-							<?php if ($images!='' && file_exists("$root$images")){?>
-							<li data-target="#indikator" style="background:#FFF" data-slide-to="0" class="active"></li>
-							<?php }
-							if ($images2!='' && file_exists("$root$images2")){?>
-								<li data-target="#indikator" style="background:#FFF" data-slide-to="1"></li>
-							<?php }
-							if ($images3!='' && file_exists("$root$images3")){?>
-								<li data-target="#indikator" style="background:#FFF" data-slide-to="2"></li>
-							<?php }?>
-						</ol>
-						<div class="carousel-inner">
-							<!-- <div class="carousel-item active">
-								<img id="img-preview" src="<?php echo $images;?>">
-							</div> -->
-							<?php if ($images!='' && file_exists("$root$images")){?>
-								<div class="carousel-item active">
-									<img id="img-preview" src="<?php echo $images;?>">
-								</div>
-							<?php }
+					<div id="showImage">
+						<div id="indikator" class="carousel slide" data-ride="carousel" data-interval="false">
+							
+							<ol class="carousel-indicators-inside">
+								<?php if ($images!='' && file_exists("$root$images")){?>
+								<li data-target="#indikator" style="background:#FFF" data-slide-to="0" class="active"></li>
+								<?php }
+								if ($images2!='' && file_exists("$root$images2")){?>
+									<li data-target="#indikator" style="background:#FFF" data-slide-to="1"></li>
+								<?php }
+								if ($images3!='' && file_exists("$root$images3")){?>
+									<li data-target="#indikator" style="background:#FFF" data-slide-to="2"></li>
+								<?php }?>
+							</ol>
+							<div class="carousel-inner">
+								<?php if ($images!='' && file_exists("$root$images")){?>
+									<div class="carousel-item active">
+										<img id="img-preview" src="<?php echo $images;?>">
+									</div>
+								<?php }
 
-							if ($images2!='' && file_exists("$root$images2")){
-								?>
-								<div class="carousel-item">
-									<img id="img-preview" src="<?php echo $images2;?>">
-								</div>
-							<?php }
-							if ($images3!='' && file_exists("$root$images3")){?>
-								<div class="carousel-item">
-									<img id="img-preview" src="<?php echo $images3;?>">
-								</div>
-							<?php }?>
+								if ($images2!='' && file_exists("$root$images2")){
+									?>
+									<div class="carousel-item">
+										<img id="img-preview" src="<?php echo $images2;?>">
+									</div>
+								<?php }
+								if ($images3!='' && file_exists("$root$images3")){?>
+									<div class="carousel-item">
+										<img id="img-preview" src="<?php echo $images3;?>">
+									</div>
+								<?php }?>
+							</div>
+							<a class="carousel-control-prev" href="#indikator" data-slide="prev">
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#indikator" data-slide="next">
+								<span class="sr-only">Next</span>
+							</a>
+							<ol class="carousel-indicators">
+								<?php if ($images!='' && file_exists("$root$images")){?>
+									<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator" src="<?= $images ?>"></li>
+								<?php }
+								if ($images2!='' && file_exists("$root$images2")){?>
+									<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator" src="<?= $images2 ?>"></li>
+								<?php }
+								if ($images3!='' && file_exists("$root$images3")){?>
+									<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator" src="<?= $images3 ?>"></li>
+								<?php }?>
+								
+							</ol>
 						</div>
-						<a class="carousel-control-prev" href="#indikator" data-slide="prev">
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#indikator" data-slide="next">
-							<span class="sr-only">Next</span>
-						</a>
-						<ol class="carousel-indicators">
-							<!-- <li data-target="#indikator" data-slide-to="0" class="active">
-								<img class="img-indikator" src="<?php echo $images?>">
-							</li>
-							
-							<?php if($images2!=''){?>
-							<li data-target="#indikator" data-slide-to="0" class="active">
-								<img class="img-indikator" src="<?php echo $images2?>">
-							</li>
-							<?php 
-							}
-
-							if($images3!=''){
-							?>
-							<li data-target="#indikator" data-slide-to="0" class="active">
-								<img class="img-indikator" src="<?php echo $images3?>">
-							</li>
-							<?php } ?> -->
-							<?php if ($images!='' && file_exists("$root$images")){?>
-								<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator" src="<?= $images ?>"></li>
-							<?php }
-							if ($images2!='' && file_exists("$root$images2")){?>
-								<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator" src="<?= $images2 ?>"></li>
-							<?php }
-							if ($images3!='' && file_exists("$root$images3")){?>
-								<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator" src="<?= $images3 ?>"></li>
-							<?php }?>
-							
-						</ol>
 					</div>
 				</div>
 				
@@ -254,7 +224,7 @@ include ("template/header_produk.php");?>
 					</div> -->
 					
 					<p class="pilih">Color Available</p>
-					<div>
+					<div class="mb-1">
 					<?php 
 					$sql="SELECT
 						pw.kode_warna
@@ -269,37 +239,13 @@ include ("template/header_produk.php");?>
 							//  echo $sql;        
 							while(list($kode_warna,$warna)=mysqli_fetch_array($query)){    	      	        
 					?>
-							<a href="detail_produk.php?idp=<?php echo $_GET['idp']?>&color=<?php echo $kode_warna; ?>">
-							<div class="button" >
-								<label type="submit" value="submit" class="btn button-color" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>"></label>
+							<div class="button">
+								<input style="margin-top:10px !important" type="radio" id="<?php echo $warna;?>" name="warna"  value="<?php echo $warna;?>"  />
+								<label class="btn button-color" for="<?php echo $warna;?>" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>" onclick="changeColor('<?php echo $_GET['idp']; ?>','<?php echo $kode_warna; ?>','<?php echo $root; ?>')"></label>
 							</div>
-							</a>
-							
-					<?php } ?>		
-							<p>&nbsp;</p>
-							<!-- <div class="button btn-warna" style="background-color: #805859 !important;margin-right:5px!important;">
-							
-							</div>
-							<div class="button btn-warna" style="background-color: #564a40 !important;margin-right:5px!important;">
-								
-							</div>
-							<div class="button btn-warna" style="background-color: #424240 !important;margin-right:5px!important;">
-							
-							</div>
-							<div class="button btn-warna" style="background-color: #2c2a40 !important;margin-right:5px!important;">
-							
-							</div>
-							<div class="button btn-warna" style="background-color: #0c0a0d !important;margin-right:5px!important;">
-								
-							</div>
-							<div class="button btn-warna" style="background-color: #eeecf7 !important;margin-right:5px!important;">
-								
-							</div> -->
-						
-						
+					<?php } ?>	
 					</div>
 
-					
 				</div>
 			</div>
 			<!-- .postcontent end -->
@@ -344,6 +290,28 @@ include ("template/header_produk.php");?>
         </div>
     </div>
 </section>
+
+
+<script>
+	function changeColor(id,kw,root) {
+		var id_prod = id;
+		var kw = kw;
+		var root = root;
+		$.ajax({
+		url: 'change_produk_per_warna.php',
+		data: {
+			"id_prod"    : id_prod,
+			"kw"         : kw,
+			"root"       : root,
+			},
+			success: function(data) {
+
+			$('#showImage').html(data);
+
+			}
+		});
+  	}
+</script>
 <?php include ("template/footer.php");?>
 <script type="text/javascript" src="assets/js/detailproduk.js"></script>
 <script src="assets/js/format.number.min.js"></script>	
