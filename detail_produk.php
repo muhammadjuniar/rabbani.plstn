@@ -168,10 +168,10 @@ include ("template/header_produk.php");?>
 									</div>
 								<?php }?>
 							</div>
-							<a class="carousel-control-prev" href="#indikator" data-slide="prev">
+							<a class="carousel-control-prev" style="margin-bottom:100px !important;" href="#indikator" data-slide="prev">
 								<span class="sr-only">Previous</span>
 							</a>
-							<a class="carousel-control-next" href="#indikator" data-slide="next">
+							<a class="carousel-control-next" style="margin-bottom:100px !important;" href="#indikator" data-slide="next">
 								<span class="sr-only">Next</span>
 							</a>
 							<ol class="carousel-indicators">
