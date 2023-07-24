@@ -1059,7 +1059,7 @@ h4.keranjang-nama{
 	}
 	
 	.list-produk h5 {
-	margin-top: 16px;
+	/* margin-top: 16px; */
 	margin-bottom:0;
 	padding-left:15px;
 	padding-bottom: 0;
@@ -1074,7 +1074,7 @@ h4.keranjang-nama{
 	}
 	
 	.list-produk .harga-produk {
-	margin-top: 14px;
+	/* margin-top: 14px; */
 	margin-bottom: 24px;
 	font-size: 20px;
 	color:#e93636;  
@@ -1179,16 +1179,17 @@ h4.keranjang-nama{
 	  }
 
 	  .list-produk .title {
-		font-size:16px;
+		font-size:12px;
 		padding-right:10px;
 	  }
 	
 	  .list-produk .sub-title {
-		font-size:12px;
+		font-size:10px;
 	  }
 	  
 	  .list-produk .harga-produk {
-		font-size:16px;
+		padding-top:5px;
+		font-size:12px;
 		padding-right:10px;
 	  }
 	
@@ -1198,18 +1199,19 @@ h4.keranjang-nama{
 	  }
 	
 	  .text-title {
-		font-size:16px;
+		font-size:12px;
 		margin-left: -10px !important;
 	  }
 	  
 	  .link-category {
-		font-size:12px;
+		font-size:10px;
 		margin-right: -10px !important;
 	
 	  }
 	
 	  h1 {
-		font-size:16px;
+		font-size:12px;
+		margin-left: 5px !important;
 		margin-top: 5px !important;
 		margin-bottom: 5px !important;
 	  }

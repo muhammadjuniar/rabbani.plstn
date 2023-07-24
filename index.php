@@ -16,8 +16,48 @@
 		min-height: 110px;
 		width: 100%;
 	}
+
+  #preloader 
+  { 
+    display: flex;
+    position: fixed; 
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: #FFFFFF; 
+    align-items: center;
+    justify-content: center;
+  }
+
+  #preloader img {
+    animation: fadeIn 2s;
+  }
+
+  @keyframes fadeIn {
+			0% { opacity: 0; }
+			100% { opacity: 1; }
+	}
+
+  @keyframes fadeOut {
+			0% { opacity: 1; }
+			100% { opacity: 0; }
+	}
   
+  
+  @media (max-width: 440px){
+    .list-produk .title {
+      white-space: nowrap;
+      width: 105px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 </style>
+<div id="preloader">
+  <img src="assets/images/preloader.png" alt="preloader" />
+</div>
 <?php include "slider.php"; ?>
 <section id="content" style="margin-bottom: 0px;background: #f5f5f5; ">
   <div class="container-fluid" style="background-color:#f5f5f5">
@@ -100,4 +140,17 @@
     </div>
 </section>
 
+<script>
+  window.onload = function Preloader() {
+      setTimeout(() => {
+          document.querySelector('#preloader').style.display = "none";
+      }, 2000)
+  };
+  if (!sessionStorage.getItem('doNotShow')) {
+    sessionStorage.setItem('doNotShow', true);
+    Preloader();
+  } else {
+    document.querySelector('#preloader').style.display = "none";
+  }
+</script>
 <?php include("template/footer.php"); ?>
