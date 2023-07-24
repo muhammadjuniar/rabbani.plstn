@@ -33,19 +33,19 @@ list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$sta
 		<div class="carousel-inner">
 			<?php if ($images!='' && file_exists("$root$images")){?>
 				<div class="carousel-item active">
-					<img id="img-preview" class="img-preview" src="<?php echo $images;?>">
+					<img id="img-preview" class="img-preview lazy-load easeload" src="<?php echo $images;?>">
 				</div>
 			<?php }
 
 			if ($images2!='' && file_exists("$root$images2")){
 				?>
 				<div class="carousel-item">
-					<img id="img-preview" class="img-preview" src="<?php echo $images2;?>">
+					<img id="img-preview" class="img-preview lazy-load easeload" src="<?php echo $images2;?>">
 				</div>
 			<?php }
 			if ($images3!='' && file_exists("$root$images3")){?>
 				<div class="carousel-item">
-					<img id="img-preview" class="img-preview" src="<?php echo $images3;?>">
+					<img id="img-preview" class="img-preview lazy-load easeload" src="<?php echo $images3;?>">
 				</div>
 			<?php }?>
 		</div>
@@ -57,13 +57,13 @@ list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$sta
 		</a>
 		<ol class="carousel-indicators">
 			<?php if ($images!='' && file_exists("$root$images")){?>
-				<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator" src="<?= $images ?>"></li>
+				<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator easeload" src="<?= $images ?>"></li>
 			<?php }
 			if ($images2!='' && file_exists("$root$images2")){?>
-				<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator" src="<?= $images2 ?>"></li>
+				<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator easeload" src="<?= $images2 ?>"></li>
 			<?php }
 			if ($images3!='' && file_exists("$root$images3")){?>
-				<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator" src="<?= $images3 ?>"></li>
+				<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator easeload" src="<?= $images3 ?>"></li>
 			<?php }?>
 			
 		</ol>

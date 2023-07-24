@@ -40,7 +40,23 @@ include ("template/header_produk.php");?>
 			flex-direction: row;
 			width: 100%;
 		}
-	
+
+		.easeload{
+			animation: fadeIn 2s; 
+		}
+
+		
+		img.lazy-load {
+			background: #ececec;
+			width: 600px;
+			height: 565px;
+		}
+
+		@keyframes fadeIn {
+			0% { opacity: 0; }
+			100% { opacity: 1; }
+		}
+
 		.login-separator {
 			display: flex;
 			align-items: center;
@@ -85,13 +101,30 @@ include ("template/header_produk.php");?>
 		
 		@media (min-width: 767px){
 			.carousel-indicators-inside{
-				display:none;
+				display:none !important;
 			}
 			.navigation-height {
 				margin-bottom:100px !important;
 			}
 		}
-		@media (max-width: 767px){
+
+		@media (min-width: 992px) and (max-width: 1199px){
+			img.lazy-load {
+				background: #ececec;
+				width: 600px;
+				height: 465px;
+			}
+		}
+
+		@media (min-width: 767px) and (max-width: 991px){
+			img.lazy-load {
+				background: #ececec;
+				width: 600px;
+				height: 355px;
+			}
+		}
+
+		@media (min-width: 601px) and (max-width: 767px){
 			
 			.img-indikator{
 				display:none;
@@ -106,9 +139,42 @@ include ("template/header_produk.php");?>
 			.judul-produk{
 				margin-top:16px !important;
 			}
+			img.lazy-load {
+				background: #ececec;
+				width: 600px;
+				height: 530px;
+			}
+		}
+
+		@media (min-width: 412px) and (max-width: 600px){
+			
+			.img-indikator{
+				display:none;
+			}
+			.carousel-indicators{
+				display:none;
+			}
+			.button-color {
+				width:35px;
+				height:35px;
+			}
+			.judul-produk{
+				margin-top:16px !important;
+			}
+			img.lazy-load {
+				background: #ececec;
+				width: 600px;
+				height: 410px;
+			}
 		}
 
 		@media (max-width: 411px) {
+			.img-indikator{
+				display:none;
+			}
+			.carousel-indicators{
+				display:none;
+			}
 			.carousel-indicators-inside{
 				position: absolute !important;
 				margin-bottom:-10% !important;
@@ -120,6 +186,64 @@ include ("template/header_produk.php");?>
 			}
 			.judul-produk{
 				margin-top:16px !important;
+			}
+			img.lazy-load {
+				background: #ececec;
+				width: 600px;
+				height: 400px;
+			}
+		}
+
+		@media (max-width: 360px) {
+			.img-indikator{
+				display:none;
+			}
+			.carousel-indicators{
+				display:none;
+			}
+			.carousel-indicators-inside{
+				position: absolute !important;
+				margin-bottom:-10% !important;
+			}
+			.carousel-indicators-inside li {
+				max-width: 12px !important;
+				max-height: 12px !important;
+
+			}
+			.judul-produk{
+				margin-top:16px !important;
+			}
+			img.lazy-load {
+				background: #ececec;
+				width: 600px;
+				height: 360px;
+			}
+		}
+
+		@media (max-width: 280px) {
+			.img-indikator{
+				display:none;
+			}
+			.carousel-indicators{
+				display:none;
+			}
+			.carousel-indicators-inside{
+				position: absolute !important;
+				margin-bottom:-15% !important;
+			}
+			.carousel-indicators-inside li {
+				max-width: 10px !important;
+				max-height: 10px !important;
+
+			}
+			.judul-produk{
+				margin-top:16px !important;
+				font-size:16px !important;
+			}
+			img.lazy-load {
+				background: #ececec;
+				width: 600px;
+				height: 280px;
 			}
 		}
 	</style>
@@ -155,19 +279,19 @@ include ("template/header_produk.php");?>
 							<div class="carousel-inner">
 								<?php if ($images!='' && file_exists("$root$images")){?>
 									<div class="carousel-item active">
-										<img id="img-preview" class="img-preview" src="<?php echo $images;?>">
+										<img id="img-preview" class="img-preview lazy-load easeload" data-src="<?php echo $images;?>">
 									</div>
 								<?php }
 
 								if ($images2!='' && file_exists("$root$images2")){
 									?>
 									<div class="carousel-item">
-										<img id="img-preview" class="img-preview" src="<?php echo $images2;?>">
+										<img id="img-preview" class="img-preview lazy-load easeload" data-src="<?php echo $images2;?>">
 									</div>
 								<?php }
 								if ($images3!='' && file_exists("$root$images3")){?>
 									<div class="carousel-item">
-										<img id="img-preview" class="img-preview" src="<?php echo $images3;?>">
+										<img id="img-preview" class="img-preview lazy-load easeload" data-src="<?php echo $images3;?>">
 									</div>
 								<?php }?>
 							</div>
@@ -179,13 +303,13 @@ include ("template/header_produk.php");?>
 							</a>
 							<ol class="carousel-indicators">
 								<?php if ($images!='' && file_exists("$root$images")){?>
-									<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator" src="<?= $images ?>"></li>
+									<li data-target="#indikator" data-slide-to="0" class="active"><img class="img-indikator easeload" src="<?= $images ?>"></li>
 								<?php }
 								if ($images2!='' && file_exists("$root$images2")){?>
-									<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator" src="<?= $images2 ?>"></li>
+									<li data-target="#indikator" data-slide-to="1" class="active"><img class="img-indikator easeload" src="<?= $images2 ?>"></li>
 								<?php }
 								if ($images3!='' && file_exists("$root$images3")){?>
-									<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator" src="<?= $images3 ?>"></li>
+									<li data-target="#indikator" data-slide-to="2" class="active"><img class="img-indikator easeload" src="<?= $images3 ?>"></li>
 								<?php }?>
 								
 							</ol>
@@ -312,6 +436,28 @@ include ("template/header_produk.php");?>
 			}
 		});
   	}
+	
+	function preload_image(img) {
+		img.src = img.dataset.src;
+		console.log(`Loading ${img.src}`);
+	}
+
+	let observer = new IntersectionObserver(function(entries, self) {
+	for(entry of entries) { 
+		if(entry.isIntersecting) {
+		let elem = entry.target;
+		preload_image(elem);   
+		self.unobserve(elem);
+		}
+	}
+	});
+
+	let images = document.querySelectorAll('img.lazy-load');
+
+	for(image of images) {
+	observer.observe(image);
+	}
+
 </script>
 <?php include ("template/footer.php");?>
 <script type="text/javascript" src="assets/js/detailproduk.js"></script>
