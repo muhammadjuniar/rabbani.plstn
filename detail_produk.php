@@ -14,17 +14,19 @@ if(mysqli_num_rows($result) < 1) {
 	header('Location: index.php');
 }
 
-	$sql="SELECT
-                  id,
-                  nama_produk,
-                  kategori,
-                  foto,
-                  foto2,
-                  foto3,
-                  deskripsi,
-                  harga_total,
-                  `status`
-                FROM produk where id='$idp'";
+	$sql="	SELECT
+                id,
+                nama_produk,
+                kategori,
+                foto,
+                foto2,
+                foto3,
+                deskripsi,
+                harga_total,
+                `status`
+        	FROM produk 
+			WHERE id='$idp'
+		";
         $query=mysqli_query($link,$sql);
         list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
 
@@ -32,20 +34,21 @@ include ("template/header_produk.php");?>
 <?php include("template/navbar.php"); ?>
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-		*{
+
+		* {
 			font-family: Roboto, "sans-serif";
 		}
+
 		.container_login {
 			display: flex;
 			flex-direction: row;
 			width: 100%;
 		}
 
-		.easeload{
+		.easeload {
 			animation: fadeIn 2s; 
 		}
 
-		
 		img.lazy-load {
 			background: #ececec;
 			width: 600px;
@@ -66,41 +69,49 @@ include ("template/header_produk.php");?>
 			min-height: 110px;
 			width: 100%;
 		}
+
 		h1.rp {
 			margin-top: 8px;
 			padding-left: 5px !important;
 			font-size: 20px !important;
 			color: #e93636 !important;
 		}
-		.btn-warna{
+
+		.btn-warna {
 			width:32px;
 			height:32px;
 			border: 1px solid #8d8d8d;
 		}
+
 		.btn {
 			border-radius: 6px;
 		}
+
 		.btn:hover {
 			border: 1px solid #8d8d8d;
 		}
+
 		.button-color {
 			width:40px;
 			height:40px;
 			border:1px solid #ccc !important;
 			/* margin-top: 5px !important; */
 		}
-		.img-preview{
+
+		.img-preview {
 			border-radius: 8px !important;
 		}
-		.img-indikator{
+
+		.img-indikator {
 			border-radius: 8px !important;
 		}
+
 		.judul-produk{
 			font-size: 20px;
 		}
 		
-		@media (min-width: 767px){
-			.carousel-indicators-inside{
+		@media (min-width: 767px) {
+			.carousel-indicators-inside {
 				display:none !important;
 			}
 			.navigation-height {
@@ -108,7 +119,7 @@ include ("template/header_produk.php");?>
 			}
 		}
 
-		@media (min-width: 992px) and (max-width: 1199px){
+		@media (min-width: 992px) and (max-width: 1199px) {
 			img.lazy-load {
 				background: #ececec;
 				width: 600px;
@@ -116,7 +127,7 @@ include ("template/header_produk.php");?>
 			}
 		}
 
-		@media (min-width: 767px) and (max-width: 991px){
+		@media (min-width: 767px) and (max-width: 991px) {
 			img.lazy-load {
 				background: #ececec;
 				width: 600px;
@@ -124,19 +135,21 @@ include ("template/header_produk.php");?>
 			}
 		}
 
-		@media (min-width: 601px) and (max-width: 767px){
-			
-			.img-indikator{
+		@media (min-width: 601px) and (max-width: 767px) {
+			h5 {
+				margin-top: 15px;
+			}
+			.img-indikator {
 				display:none;
 			}
-			.carousel-indicators{
+			.carousel-indicators {
 				display:none;
 			}
 			.button-color {
 				width:35px;
 				height:35px;
 			}
-			.judul-produk{
+			.judul-produk {
 				margin-top:16px !important;
 			}
 			img.lazy-load {
@@ -146,19 +159,21 @@ include ("template/header_produk.php");?>
 			}
 		}
 
-		@media (min-width: 412px) and (max-width: 600px){
-			
-			.img-indikator{
+		@media (min-width: 412px) and (max-width: 600px) {
+			h5 {
+				margin-top: 15px;
+			}
+			.img-indikator {
 				display:none;
 			}
-			.carousel-indicators{
+			.carousel-indicators {
 				display:none;
 			}
 			.button-color {
 				width:35px;
 				height:35px;
 			}
-			.judul-produk{
+			.judul-produk {
 				margin-top:16px !important;
 			}
 			img.lazy-load {
@@ -169,13 +184,13 @@ include ("template/header_produk.php");?>
 		}
 
 		@media (max-width: 411px) {
-			.img-indikator{
+			.img-indikator {
 				display:none;
 			}
-			.carousel-indicators{
+			.carousel-indicators {
 				display:none;
 			}
-			.carousel-indicators-inside{
+			.carousel-indicators-inside {
 				position: absolute !important;
 				margin-bottom:-10% !important;
 			}
@@ -184,24 +199,50 @@ include ("template/header_produk.php");?>
 				max-height: 12px !important;
 
 			}
-			.judul-produk{
+			.judul-produk {
 				margin-top:16px !important;
 			}
 			img.lazy-load {
 				background: #ececec;
 				width: 600px;
-				height: 400px;
+				height: 410px;
+			}
+		}
+
+		@media (max-width: 375px) {
+			.img-indikator {
+				display:none;
+			}
+			.carousel-indicators {
+				display:none;
+			}
+			.carousel-indicators-inside {
+				position: absolute !important;
+				margin-bottom:-10% !important;
+			}
+			.carousel-indicators-inside li {
+				max-width: 12px !important;
+				max-height: 12px !important;
+
+			}
+			.judul-produk {
+				margin-top:16px !important;
+			}
+			img.lazy-load {
+				background: #ececec;
+				width: 600px;
+				height: 373px;
 			}
 		}
 
 		@media (max-width: 360px) {
-			.img-indikator{
+			.img-indikator {
 				display:none;
 			}
-			.carousel-indicators{
+			.carousel-indicators {
 				display:none;
 			}
-			.carousel-indicators-inside{
+			.carousel-indicators-inside {
 				position: absolute !important;
 				margin-bottom:-10% !important;
 			}
@@ -221,13 +262,13 @@ include ("template/header_produk.php");?>
 		}
 
 		@media (max-width: 280px) {
-			.img-indikator{
+			.img-indikator {
 				display:none;
 			}
-			.carousel-indicators{
+			.carousel-indicators {
 				display:none;
 			}
-			.carousel-indicators-inside{
+			.carousel-indicators-inside {
 				position: absolute !important;
 				margin-bottom:-15% !important;
 			}
@@ -236,7 +277,7 @@ include ("template/header_produk.php");?>
 				max-height: 10px !important;
 
 			}
-			.judul-produk{
+			.judul-produk {
 				margin-top:16px !important;
 				font-size:16px !important;
 			}
