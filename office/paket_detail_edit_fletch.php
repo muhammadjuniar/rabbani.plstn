@@ -1,4 +1,5 @@
 <?php 
+error_reporting(0);
 include"connect.php";
 $id=$_POST['id'];
 //	echo "ID : ".$id;

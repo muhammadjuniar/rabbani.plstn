@@ -27,6 +27,11 @@ $temp_barcode=$_POST['temp_barcode'];
 
 $username= $_SESSION['namauseradmin']  ;
 
+$kode_warna=$_POST['kode_warna'];
+$warna_indonesia=$_POST['warna'];
+$warna_english=$_POST['warna_english'];
+$images=$_POST['images'];
+
 if($jenis=='paket_entry'){
 
    $depan="P";
@@ -136,17 +141,17 @@ if($jenis=='paket_entry'){
 
 } else if($jenis=='paket_detail_entry'){
 
-	$sql="INSERT INTO paket_order_detail (id_paket,barcode,nama_produk,ukuran,warna,disc_conf,qty,harga,diskon,netto)
+	$sql="INSERT INTO paket_detail (id_produk,barcode,nama_produk,ukuran,warna,disc_conf,qty,harga,diskon,netto)
           VALUES ('$temp_id_paket','$barcode','$nama_produk','$ukuran','$warna','$disc_conf','$qty','$harga','','$harga')";
-    $query=mysqli_query($link,$sql) or die ('error entry paket detail');   
+    $query=mysqli_query($link,$sql) or die ('error entry produk detail');   
 
     if($query){
         echo"berhasil";
-        header("location:paket_detail.php?idpaket=".$temp_id_paket);	
+        header("location:paket_detail.php?idproduk=".$temp_id_paket);	
     }		   
 } else if($jenis=='paket_detail_edit'){
 
-	$sql="UPDATE paket_order_detail
+	$sql="UPDATE paket_detail
 			SET 
 			  nama_produk = '$nama_produk',
 			  ukuran = '$ukuran',
@@ -156,9 +161,9 @@ if($jenis=='paket_entry'){
 			  harga = '$harga',
 			  diskon = '$diskon',
 			  netto = '$harga'
-			WHERE id_paket = '$temp_id_paket'
+			WHERE id_produk = '$temp_id_paket'
 			    AND barcode = '$temp_barcode'";
-    $query=mysqli_query($link,$sql) or die ('error edit paket detail');   
+    $query=mysqli_query($link,$sql) or die ('error edit produk detail');   
 
     if($query){
 
@@ -232,6 +237,91 @@ if($jenis=='paket_entry'){
   }   
 
 
-} 
+} if($jenis=='produk_warna_entry'){
+
+  $fileName = $_FILES['images']['name'];
+
+  $uploaddir ="../assets/images/warna/";
+  $uploadfile = $uploaddir.$fileName;
+  $file_tmp = $_FILES['images']['tmp_name'];
+  $uploadfoto=move_uploaded_file($file_tmp,$uploadfile);
+
+  $url_file_db="../assets/images/warna/".$fileName;
+
+  if($uploadfoto){
+       $sql="INSERT INTO warna(kode_warna, warna, warna_english, images)
+        VALUES ('$kode_warna','$warna_indonesia','$warna_english','$url_file_db')";
+
+       $query=mysqli_query($link,$sql)  or die ('error entry data');
+
+       if($query){
+         header("location:paket_warna.php?alert=sukses");	
+       }
+  } else {
+       echo"gagal upload";
+  }
+  //echo"$id_paket";
+
+
+} else if($jenis=='produk_warna_edit'){
+
+ $sql="UPDATE warna
+     SET 
+       kode_warna = '$kode_warna',
+       warna = '$warna_indonesia',
+       warna_english = '$warna_english'
+     WHERE kode_warna = '$kode_warna'";
+ $query=mysqli_query($link,$sql) or die ('error update data');
+
+ $fileName  		= $_FILES['images']['name'];
+
+ if($fileName!=''){
+    
+    $uploaddir ="../assets/images/warna/";
+    $uploadfile = $uploaddir.$fileName;
+    $file_tmp = $_FILES['images']['tmp_name'];
+    $uploadfoto=move_uploaded_file($file_tmp,$uploadfile);
+
+    $url_file_db="../assets/images/warna/".$fileName;
+
+   $up="UPDATE warna
+       SET 
+         images = '$url_file_db'
+       WHERE kode_warna = '$kode_warna'";
+   $qup=mysqli_query($link,$up) or die ('error update foto');
+   //echo $up; die();
+ }  		
+  
+ if($query){
+       echo"berhasil";
+       header("location:paket_warna.php?alert=sukses");	
+   }		
+
+} else if($jenis=='produk_warna_edit_image'){
+ 
+  $fileName  		= $_FILES['images']['name'];
+ 
+  if($fileName!=''){
+     
+     $uploaddir ="../assets/images/warna/";
+     $uploadfile = $uploaddir.$fileName;
+     $file_tmp = $_FILES['images']['tmp_name'];
+     $uploadfoto=move_uploaded_file($file_tmp,$uploadfile);
+ 
+     $url_file_db="../assets/images/warna/".$fileName;
+ 
+    $up="UPDATE warna
+        SET 
+          images = '$url_file_db'
+        WHERE kode_warna = '$kode_warna'";
+    $qup=mysqli_query($link,$up) or die (mysqli_error());
+    //echo $up; die();
+  }  		
+   
+  if($qup){
+        header("location:paket_warna.php?alert=sukses");	
+    }		
+ 
+ }
 
 ?>
