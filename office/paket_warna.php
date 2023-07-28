@@ -38,7 +38,7 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 					<form action="<?php echo $thisPage; ?>">
 					<div class="form-group row">
 							    <div class="col-sm-1">
-									<b class="pull-right">Cari warna</b>
+									<b class="pull-left">Cari warna</b>
 								</div>	
 								<div class="col-sm-2">
 									<p class="form-control-static">
@@ -63,7 +63,7 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 								<div class="col">
 									<input class="btn btn-info" type="submit" id="submit" value="Cari">
 									<a href="paket_warna.php"><input type="button" value="Reset" class="btn btn-secondary"></a>
-									<a href="#" data-toggle="modal" data-target="#produkWarnaEntry"><button class="btn btn-success" onclick="reset_input()">+ Warna</button></a>
+									<a href="#" class="pull-right" data-toggle="modal" data-target="#produkWarnaEntry"><button class="btn btn-success" onclick="reset_input()">+ Warna</button></a>
 									<!-- <a href="#" data-toggle="modal" data-target="#produkWarnaBulk"><button class="btn btn-success" onclick="reset_input()">Upload Bulk Warna</button></a> -->
 								</div>
 						</div>
@@ -82,6 +82,11 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 					}else{
 						$limit=50;
 					}
+					
+					$countData="SELECT kode_warna FROM warna";
+					$queryCount=mysqli_query($link,$countData); 
+					$totalCount=mysqli_num_rows($queryCount);
+
 					$sql="SELECT kode_warna, warna, warna_english, images
                           FROM warna
 						  WHERE (warna NOT LIKE '%unidefined%' AND warna NOT LIKE '%unidentified%') AND (warna_english NOT LIKE '%unidefined%' AND warna_english NOT LIKE '%unidentified%') $search
@@ -90,6 +95,7 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
                     $query=mysqli_query($link,$sql);     
 					$rowCount=mysqli_num_rows($query);
 					?>
+					<div class="pull-right">Total data: <b><?php echo $totalCount; ?></b> warna</div>
 					<table id="example" class="display table table-striped table-bordered responsive" cellspacing="0" width="100%">
 						<thead>
 						<tr>
