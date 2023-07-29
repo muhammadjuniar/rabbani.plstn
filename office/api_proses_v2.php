@@ -52,13 +52,13 @@ $fullpathWarna = "https://rabbani.co.id/warna/".$namafile;
 
 $server_path="https://rabbani.co.id/product/";
 
+$local_dir = "temp/";
+
 // images
 
 $is_develop = 1; // ubah menjadi 0 untuk production 
 
 if($jenis=='produk_entry'){
-
-    $local_dir = "temp/";
 
     $getext = end(explode('.', $_FILES["foto"]["name"])); // get upload file ext
     $namafile = $date . '' . $utxt . '' . $rand . '.' . $getext;
@@ -89,7 +89,7 @@ if($jenis=='produk_entry'){
         //print_r($kirim_data); die();   
         if (trim($kirim_data)=='berhasil')
         {
-          unlink($uploadfile);
+          // unlink($uploadfile);
           $media_url=$fullpath;
         }	
     } else {
@@ -110,22 +110,22 @@ if($jenis=='produk_entry'){
 
         //echo"ok";
         $uploadfile2;
-        $data2 = file_get_contents($uploadfile2);
+        $data = file_get_contents($uploadfile2);
         //encode ke base64
-        $namafileb642    = base64_encode($data2);
+        $namafileb64    = base64_encode($data);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim2 = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb642,
+        $datakirim = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb64,
                         'namafile' => $namafile2 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data2=$RestData->insert_b64_foto_produk_rpos($datakirim2);
+        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
         //print_r($kirim_data); die();   
-        if (trim($kirim_data2)=='berhasil')
+        if (trim($kirim_data)=='berhasil')
         {
-          unlink($uploadfile2);
+          // unlink($uploadfile2);
           $media_url2=$fullpath2;
         }	
     } else {
@@ -146,22 +146,22 @@ if($jenis=='produk_entry'){
 
         //echo"ok";
         $uploadfile3;
-        $data3 = file_get_contents($uploadfile3);
+        $data = file_get_contents($uploadfile3);
         //encode ke base64
-        $namafileb643    = base64_encode($data3);
+        $namafileb64    = base64_encode($data);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim3 = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb643,
+        $datakirim = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb64,
                         'namafile' => $namafile3 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data3=$RestData->insert_b64_foto_produk_rpos($datakirim3);
+        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
         //print_r($kirim_data); die();   
-        if (trim($kirim_data3)=='berhasil')
+        if (trim($kirim_data)=='berhasil')
         { 
-          unlink($uploadfile3);
+          // unlink($uploadfile3);
           $media_url3=$fullpath3;
         }	
     } else {
@@ -176,7 +176,7 @@ if($jenis=='produk_entry'){
       //   '$mulai','$akhir','','','',now(),'admin','0')";
    		 $sql="INSERT INTO produk_dev(id,nama_produk,kategori,foto,foto2,foto3,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,
          `start`,`end`,is_send,is_batal,`repeat`,created_at,created_by,`status`)
-         VALUES ('$kode_model','$nama_produk','$category','$fullpath','$fullpath2','$fullpath3','','','$kode_model','$deskripsi','$qty_total','$harga_total',
+         VALUES ('$kode_model','$nama_produk','$category','$media_url','$media_url2','$media_url3','','','$kode_model','$deskripsi','$qty_total','$harga_total',
         '$mulai','$akhir','','','',now(),'admin','0')";
       }else{
    		 $sql="INSERT INTO produk(id,nama_produk,kategori,foto,foto2,foto3,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,
@@ -238,8 +238,6 @@ if($jenis=='produk_entry'){
 	  
   if ($fileName != '') {
 
-    $local_dir = "temp/";
-
     $getext = end(explode('.', $_FILES["foto"]["name"])); // get upload file ext
     $namafile = $date . '' . $utxt . '' . $rand . '.' . $getext;
     $fullpath = "https://rabbani.co.id/product/".$namafile;
@@ -269,7 +267,7 @@ if($jenis=='produk_entry'){
         //print_r($kirim_data); die();   
         if (trim($kirim_data)=='berhasil')
         {
-          unlink($uploadfile);
+          // unlink($uploadfile);
           $media_url=$fullpath;
         }	
     } else {
@@ -280,7 +278,7 @@ if($jenis=='produk_entry'){
 
       $up="UPDATE produk_dev
           SET 
-            foto = '$fullpath'
+            foto = '$media_url'
           WHERE id = '$temp_id'
           ";
       }else{
@@ -309,22 +307,22 @@ if($jenis=='produk_entry'){
 
         //echo"ok";
         $uploadfile2;
-        $data2 = file_get_contents($uploadfile2);
+        $data = file_get_contents($uploadfile2);
         //encode ke base64
-        $namafileb642    = base64_encode($data2);
+        $namafileb64    = base64_encode($data);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim2 = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb642,
+        $datakirim = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb64,
                         'namafile' => $namafile2 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data2=$RestData->insert_b64_foto_produk_rpos($datakirim2);
+        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
         //print_r($kirim_data); die();   
-        if (trim($kirim_data2)=='berhasil')
+        if (trim($kirim_data)=='berhasil')
         {
-          unlink($uploadfile2);
+          // unlink($uploadfile2);
           $media_url2=$fullpath2;
         }	
     } else {
@@ -335,7 +333,7 @@ if($jenis=='produk_entry'){
 
       $up="UPDATE produk_dev
           SET 
-            foto2 = '$fullpath2'
+            foto2 = '$media_url2'
           WHERE id = '$temp_id'
           ";
       }else{
@@ -363,22 +361,22 @@ if($jenis=='produk_entry'){
 
         //echo"ok";
         $uploadfile3;
-        $data3 = file_get_contents($uploadfile3);
+        $data = file_get_contents($uploadfile3);
         //encode ke base64
-        $namafileb643    = base64_encode($data3);
+        $namafileb64    = base64_encode($data);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim3 = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb643,
+        $datakirim = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb64,
                         'namafile' => $namafile3 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data3=$RestData->insert_b64_foto_produk_rpos($datakirim3);
+        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
         //print_r($kirim_data); die();   
-        if (trim($kirim_data3)=='berhasil')
+        if (trim($kirim_data)=='berhasil')
         {
-          unlink($uploadfile3);
+          // unlink($uploadfile3);
           $media_url3=$fullpath3;
         }	
     } else {
@@ -389,7 +387,7 @@ if($jenis=='produk_entry'){
 
       $up="UPDATE produk_dev
           SET 
-            foto3 = '$fullpath3'
+            foto3 = '$media_url3'
           WHERE id = '$temp_id'
           ";
       }else{
@@ -630,7 +628,7 @@ if($jenis=='produk_entry'){
   //echo $up; die();
   
   //  hapus lokal image
-  unlink($uploadfile);
+  // unlink($uploadfile);
   if($qup){
     header("location:paket_warna.php?alert=sukses");	
   }
