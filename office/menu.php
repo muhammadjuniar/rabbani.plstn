@@ -33,6 +33,7 @@ list($tot_order_blm_approve)=mysqli_fetch_array($qc);
 	            <ul>
 	                <li><a href="paket.php"><span class="lbl">Produk</span></a></li>
 	                <li><a href="paket_warna.php"><span class="lbl">Warna</span></a></li>
+	                <li><a href="produk_v2.php"><span class="lbl">Produk V2</span></a></li>
 	                
 	            </ul>
 	        </li>

@@ -32,7 +32,7 @@
 				</div>
 			</header>
 			<?php 
-			   include "paket_entry.php";
+			   include "produk_entry_v2.php";
 			   include "paket_edit.php"; 
 			?>
 			<section class="card">
@@ -59,7 +59,7 @@
 					<?php 
 					$sql="SELECT id,nama_produk,foto,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,`start`,
                          `end`,is_send,is_batal,`repeat`,created_at,created_by,`status`
-						FROM produk";
+						FROM produk_dev";
                     $query=mysqli_query($link,$sql);     
 					?>
 					<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
@@ -142,7 +142,7 @@
 				//alert(rowid);	
 	            $.ajax({
 	                type : 'POST',
-	                url :  'paket_edit_fletch.php',
+	                url :  'produk_edit_fletch_v2.php',
 					cache: false,
 	                data :  'id='+ idx,
 	                success : function(data){

@@ -12,7 +12,7 @@
 						</div>
 						<div class="modal-body">
 							<!-- <form id="form1" name="form1" method="post" action="api_proses.php" enctype="multipart/form-data"> -->
-							<form id="form1" name="form1" method="post" action="api_proses.php" enctype="multipart/form-data">
+							<form id="form1" name="form1" method="post" action="api_proses_v2.php" enctype="multipart/form-data">
 									<input type="hidden" name="jenis" value="produk_entry">	
 								    <div class="form-group row">
 										<label class="col-sm-2 form-control-label">Nama produk</label>

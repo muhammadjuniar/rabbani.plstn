@@ -4,7 +4,7 @@ $id=$_POST['id'];
 // echo "ID : ".$id;
 $sql="SELECT id,nama_produk,kategori,foto,foto2,foto3,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,`start`,
                          `end`,is_send,is_batal,`repeat`,created_at,created_by,`status`
-                          FROM produk where id='$id'";
+                          FROM produk_dev where id='$id'";
 $query=mysqli_query($link,$sql);     
 list($id,$nama_produk,$category,$foto,$foto2,$foto3,$foto_type,$foto_size,$kode_model,$deskripsi,$qty_total,$harga_total,$start,
                          $end,$is_send,$is_batal,$repeat,$created_at,$created_by,$status)=mysqli_fetch_array($query);
@@ -15,7 +15,7 @@ $sqlKate = "SELECT id FROM produk_kategori ORDER BY nama_kategori ASC";
 $queryKate = mysqli_query($link,$sqlKate);
 ?>
 <!-- <form id="form1" name="form1" method="post" action="api_proses.php" enctype="multipart/form-data"> -->
-<form id="form1" name="form1" method="post" action="api_proses.php" enctype="multipart/form-data">
+<form id="form1" name="form1" method="post" action="api_proses_v2.php" enctype="multipart/form-data">
 									<input type="hidden" name="jenis" value="produk_edit">	
 									<input type="hidden" name="temp_id" value="<?php echo $id?>">	
 								    <div class="form-group row">
