@@ -188,7 +188,7 @@ if($jenis=='produk_entry'){
 
         if($query){
         	echo"berhasil";
-        	header("location:paket.php");	
+        	header("location:produk_v2.php");	
         }
    //echo"$id_paket";
       }else {
@@ -424,7 +424,7 @@ if($jenis=='produk_entry'){
 		//echo $up; die();		
 	 	
 	if($query){
-        header("location:paket.php?message=sukses");	
+        header("location:produk_v2.php?message=sukses");	
     }else{
       echo "update gagal";
     }	
