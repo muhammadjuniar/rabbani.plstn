@@ -273,7 +273,7 @@ if($jenis=='produk_entry'){
         $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
         //print_r($kirim_data); die();   
         
-        // unlink($uploadfile);
+        unlink($uploadfile);
         if (trim($kirim_data)=='berhasil')
         {
           $media_url=$fullpath;
