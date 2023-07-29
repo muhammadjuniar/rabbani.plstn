@@ -89,7 +89,7 @@ if($jenis=='produk_entry'){
         //print_r($kirim_data); die();   
         if (trim($kirim_data)=='berhasil')
         {
-          // unlink($uploadfile);
+          unlink($uploadfile);
           $media_url=$fullpath;
         }	
     } else {
@@ -125,7 +125,7 @@ if($jenis=='produk_entry'){
         //print_r($kirim_data); die();   
         if (trim($kirim_data)=='berhasil')
         {
-          // unlink($uploadfile2);
+          unlink($uploadfile2);
           $media_url2=$fullpath2;
         }	
     } else {
@@ -161,7 +161,7 @@ if($jenis=='produk_entry'){
         //print_r($kirim_data); die();   
         if (trim($kirim_data)=='berhasil')
         { 
-          // unlink($uploadfile3);
+          unlink($uploadfile3);
           $media_url3=$fullpath3;
         }	
     } else {
@@ -267,7 +267,7 @@ if($jenis=='produk_entry'){
         //print_r($kirim_data); die();   
         if (trim($kirim_data)=='berhasil')
         {
-          // unlink($uploadfile);
+          unlink($uploadfile);
           $media_url=$fullpath;
         }	
     } else {
@@ -322,7 +322,7 @@ if($jenis=='produk_entry'){
         //print_r($kirim_data); die();   
         if (trim($kirim_data)=='berhasil')
         {
-          // unlink($uploadfile2);
+          unlink($uploadfile2);
           $media_url2=$fullpath2;
         }	
     } else {
@@ -376,7 +376,7 @@ if($jenis=='produk_entry'){
         //print_r($kirim_data); die();   
         if (trim($kirim_data)=='berhasil')
         {
-          // unlink($uploadfile3);
+          unlink($uploadfile3);
           $media_url3=$fullpath3;
         }	
     } else {
@@ -628,7 +628,7 @@ if($jenis=='produk_entry'){
   //echo $up; die();
   
   //  hapus lokal image
-  // unlink($uploadfile);
+  unlink($uploadfile);
   if($qup){
     header("location:paket_warna.php?alert=sukses");	
   }
