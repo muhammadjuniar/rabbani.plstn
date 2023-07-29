@@ -110,20 +110,20 @@ if($jenis=='produk_entry'){
 
         //echo"ok";
         $uploadfile2;
-        $data = file_get_contents($uploadfile2);
+        $data2 = file_get_contents($uploadfile2);
         //encode ke base64
-        $namafileb64    = base64_encode($data);
+        $namafileb642    = base64_encode($data2);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb64,
+        $datakirim2 = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb642,
                         'namafile' => $namafile2 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
+        $kirim_data2=$RestData->insert_b64_foto_produk_rpos($datakirim2);
         //print_r($kirim_data); die();   
-        if (trim($kirim_data)=='berhasil')
+        if (trim($kirim_data2)=='berhasil')
         {
           unlink($uploadfile2);
           $media_url2=$fullpath2;
@@ -146,20 +146,20 @@ if($jenis=='produk_entry'){
 
         //echo"ok";
         $uploadfile3;
-        $data = file_get_contents($uploadfile3);
+        $data3 = file_get_contents($uploadfile3);
         //encode ke base64
-        $namafileb64    = base64_encode($data);
+        $namafileb643    = base64_encode($data3);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb64,
+        $datakirim3 = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb643,
                         'namafile' => $namafile3 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
+        $kirim_data3=$RestData->insert_b64_foto_produk_rpos($datakirim3);
         //print_r($kirim_data); die();   
-        if (trim($kirim_data)=='berhasil')
+        if (trim($kirim_data3)=='berhasil')
         { 
           unlink($uploadfile3);
           $media_url3=$fullpath3;
@@ -309,20 +309,20 @@ if($jenis=='produk_entry'){
 
         //echo"ok";
         $uploadfile2;
-        $data = file_get_contents($uploadfile2);
+        $data2 = file_get_contents($uploadfile2);
         //encode ke base64
-        $namafileb64    = base64_encode($data);
+        $namafileb642    = base64_encode($data2);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb64,
+        $datakirim2 = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb642,
                         'namafile' => $namafile2 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
+        $kirim_data2=$RestData->insert_b64_foto_produk_rpos($datakirim2);
         //print_r($kirim_data); die();   
-        if (trim($kirim_data)=='berhasil')
+        if (trim($kirim_data2)=='berhasil')
         {
           unlink($uploadfile2);
           $media_url2=$fullpath2;
@@ -363,20 +363,20 @@ if($jenis=='produk_entry'){
 
         //echo"ok";
         $uploadfile3;
-        $data = file_get_contents($uploadfile3);
+        $data3 = file_get_contents($uploadfile3);
         //encode ke base64
-        $namafileb64    = base64_encode($data);
+        $namafileb643    = base64_encode($data3);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb64,
+        $datakirim3 = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb643,
                         'namafile' => $namafile3 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
+        $kirim_data3=$RestData->insert_b64_foto_produk_rpos($datakirim3);
         //print_r($kirim_data); die();   
-        if (trim($kirim_data)=='berhasil')
+        if (trim($kirim_data3)=='berhasil')
         {
           unlink($uploadfile3);
           $media_url3=$fullpath3;
