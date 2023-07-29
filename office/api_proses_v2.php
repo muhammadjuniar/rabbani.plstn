@@ -5,7 +5,6 @@ include "RestData.php";
 $RestData=new RestData();
 
 $jenis=$_POST['jenis'];
-$nama_paket=$_POST['nama_paket'];
 $nama_produk=$_POST['nama_produk'];
 $category=$_POST['category'];
 $kode_model=$_POST['kode_model'];
@@ -48,7 +47,7 @@ $rand3 = rand(100000, 999999);
 
 $getextwarna = end(explode('.', $_FILES["images"]["name"])); // get upload file ext
 $namafileWarna = $date . '' . $utxtwarna . '' . $rand . '.' . $getextwarna;
-$fullpathWarna = "https://rabbani.co.id/warna/".$namafile;
+$fullpathWarna = "https://rabbani.co.id/warna/".$namafileWarna;
 
 $server_path="https://rabbani.co.id/product/";
 
@@ -57,6 +56,8 @@ $local_dir = "temp/";
 // images
 
 $is_develop = 1; // ubah menjadi 0 untuk production 
+
+// tambah produk
 
 if($jenis=='produk_entry'){
 
@@ -87,9 +88,10 @@ if($jenis=='produk_entry'){
         //kirim data array ke api
         $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
         //print_r($kirim_data); die();   
+        
+        unlink($uploadfile);
         if (trim($kirim_data)=='berhasil')
         {
-          unlink($uploadfile);
           $media_url=$fullpath;
         }	
     } else {
@@ -123,9 +125,10 @@ if($jenis=='produk_entry'){
         //kirim data array ke api
         $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
         //print_r($kirim_data); die();   
+        
+        unlink($uploadfile2);
         if (trim($kirim_data)=='berhasil')
         {
-          unlink($uploadfile2);
           $media_url2=$fullpath2;
         }	
     } else {
@@ -158,36 +161,36 @@ if($jenis=='produk_entry'){
         //print_r($datakirim); die();    
         //kirim data array ke api
         $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
-        //print_r($kirim_data); die();   
+        //print_r($kirim_data); die();  
+        
+        unlink($uploadfile3); 
         if (trim($kirim_data)=='berhasil')
         { 
-          unlink($uploadfile3);
           $media_url3=$fullpath3;
         }	
     } else {
       $media_url3="";
     }
 
-    unlink($uploadfile);
-    unlink($uploadfile2);
-    unlink($uploadfile3);
     if($kirimToLocal || $kirimToLocal2 || $kirimToLocal3) {
     if($is_develop == 1){
    		//  $sql="INSERT INTO produk_dev(id,nama_produk,kategori,foto,foto2,foto3,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,
       //    `start`,`end`,is_send,is_batal,`repeat`,created_at,created_by,`status`)
       //    VALUES ('$kode_model','$nama_produk','$media_url','$media_url2','$media_url3','','','$kode_model','$deskripsi','$qty_total','$harga_total',
       //   '$mulai','$akhir','','','',now(),'admin','0')";
-   		 $sql="INSERT INTO produk_dev(id,nama_produk,kategori,foto,foto2,foto3,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,
-         `start`,`end`,is_send,is_batal,`repeat`,created_at,created_by,`status`)
-         VALUES ('$kode_model','$nama_produk','$category','$media_url','$media_url2','$media_url3','','','$kode_model','$deskripsi','$qty_total','$harga_total',
-        '$mulai','$akhir','','','',now(),'admin','0')";
-      }else{
-   		 $sql="INSERT INTO produk(id,nama_produk,kategori,foto,foto2,foto3,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,
-        `start`,`end`,is_send,is_batal,`repeat`,created_at,created_by,`status`)
-        VALUES ('$kode_model','$nama_produk','$category','$media_url','$media_url2','$media_url3','','','$kode_model','$deskripsi','$qty_total','$harga_total',
-       '$mulai','$akhir','','','',now(),'admin','0')";
+   		  $sql="INSERT INTO produk_dev(id,nama_produk,kategori,foto,foto2,foto3,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,
+          `start`,`end`,is_send,is_batal,`repeat`,created_at,created_by,`status`)
+          VALUES ('$kode_model','$nama_produk','$category','$fullpath','$fullpath2','$fullpath3','','','$kode_model','$deskripsi','$qty_total','$harga_total',
+          '$mulai','$akhir','','','',now(),'admin','0')";
       }
-        $query=mysqli_query($link,$sql)  or die (mysqli_error($link));
+        else
+      {
+   		  $sql="INSERT INTO produk(id,nama_produk,kategori,foto,foto2,foto3,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,
+          `start`,`end`,is_send,is_batal,`repeat`,created_at,created_by,`status`)
+          VALUES ('$kode_model','$nama_produk','$category','$media_url','$media_url2','$media_url3','','','$kode_model','$deskripsi','$qty_total','$harga_total',
+          '$mulai','$akhir','','','',now(),'admin','0')";
+      }
+        $query=mysqli_query($link,$sql);
 
         if($query){
         	echo"berhasil";
@@ -198,6 +201,7 @@ if($jenis=='produk_entry'){
     echo"gagal upload";
 }
  
+// edit produk
 
 } else if($jenis=='produk_edit'){
   if($is_develop == 1) {
@@ -233,7 +237,7 @@ if($jenis=='produk_entry'){
 			  `status` = '$status'
 			WHERE id = '$temp_id'";
   }
-	  $query=mysqli_query($link,$sql) or die ('error update data');
+	  $query=mysqli_query($link,$sql);
 
     $fileName = $_FILES['foto']['tmp_name'];
     $fileName2 = $_FILES['foto2']['tmp_name'];
@@ -268,9 +272,10 @@ if($jenis=='produk_entry'){
         //kirim data array ke api
         $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
         //print_r($kirim_data); die();   
+        
+        unlink($uploadfile);
         if (trim($kirim_data)=='berhasil')
         {
-          unlink($uploadfile);
           $media_url=$fullpath;
         }	
     } else {
@@ -281,7 +286,7 @@ if($jenis=='produk_entry'){
 
       $up="UPDATE produk_dev
           SET 
-            foto = '$media_url'
+            foto = '$fullpath'
           WHERE id = '$temp_id'
           ";
       }else{
@@ -304,28 +309,29 @@ if($jenis=='produk_entry'){
     $file_tmp2 = $_FILES['foto2']['tmp_name'];
         
     $kirimToLocal2=move_uploaded_file($file_tmp2, $uploadfile2);
-
+    
     if($kirimToLocal2){
       //ambil file image beserta path nya dari quantum    
 
         //echo"ok";
         $uploadfile2;
-        $data = file_get_contents($uploadfile2);
+        $data2 = file_get_contents($uploadfile2);
         //encode ke base64
-        $namafileb64    = base64_encode($data);
+        $namafileb642    = base64_encode($data2);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb64,
+        $datakirim2 = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb642,
                         'namafile' => $namafile2 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
-        //print_r($kirim_data); die();   
-        if (trim($kirim_data)=='berhasil')
+        $kirim_data2=$RestData->insert_b64_foto_produk_rpos($datakirim2);
+        //print_r($kirim_data); die();  
+        
+        unlink($uploadfile2); 
+        if (trim($kirim_data2)=='berhasil')
         {
-          unlink($uploadfile2);
           $media_url2=$fullpath2;
         }	
     } else {
@@ -336,7 +342,7 @@ if($jenis=='produk_entry'){
 
       $up="UPDATE produk_dev
           SET 
-            foto2 = '$media_url2'
+            foto2 = '$fullpath2'
           WHERE id = '$temp_id'
           ";
       }else{
@@ -364,22 +370,23 @@ if($jenis=='produk_entry'){
 
         //echo"ok";
         $uploadfile3;
-        $data = file_get_contents($uploadfile3);
+        $data3 = file_get_contents($uploadfile3);
         //encode ke base64
-        $namafileb64    = base64_encode($data);
+        $namafileb643    = base64_encode($data3);
         
         //echo $namafileb64;
         //tampung hasil encode file_get_content, beserta nama file nya ke array 
-        $datakirim = array('j' => 'insert_b64_foto_produk',
-                        'kirimfile' => $namafileb64,
+        $datakirim3 = array('j' => 'insert_b64_foto_produk',
+                        'kirimfile' => $namafileb643,
                         'namafile' => $namafile3 );
         //print_r($datakirim); die();    
         //kirim data array ke api
-        $kirim_data=$RestData->insert_b64_foto_produk_rpos($datakirim);
-        //print_r($kirim_data); die();   
-        if (trim($kirim_data)=='berhasil')
+        $kirim_data3=$RestData->insert_b64_foto_produk_rpos($datakirim3);
+        //print_r($kirim_data); die();  
+
+        unlink($uploadfile3);
+        if (trim($kirim_data3)=='berhasil')
         {
-          unlink($uploadfile3);
           $media_url3=$fullpath3;
         }	
     } else {
@@ -390,7 +397,7 @@ if($jenis=='produk_entry'){
 
       $up="UPDATE produk_dev
           SET 
-            foto3 = '$media_url3'
+            foto3 = '$fullpath3'
           WHERE id = '$temp_id'
           ";
       }else{
@@ -402,34 +409,9 @@ if($jenis=='produk_entry'){
         }  
 		$qup=mysqli_query($link,$up) or die (mysqli_error($link));
   }
-  
-    // if($is_develop == 1){
-
-		// $up="UPDATE produk_dev
-		// 		SET 
-		// 		  foto = '$uploadfile',
-		// 		  foto2 = '$uploadfile2',
-		// 		  foto3 = '$uploadfile3'
-		// 		WHERE id = '$temp_id'
-    //     ";
-	  // }else{
-		// $up="UPDATE produk
-		// 		SET 
-		// 		  foto = '$media_url',
-		// 		  foto2 = '$media_url2',
-		// 		  foto3 = '$media_url3'
-		// 		WHERE id = '$temp_id'
-    //     ";
-    //   }  
-		// $qup=mysqli_query($link,$up) or die (mysqli_error($link));
-		//echo $up; die();		
-	 	
-    unlink($uploadfile);
-    unlink($uploadfile2);
-    unlink($uploadfile3);
     
-	if($query){
-        header("location:produk_v2.php?message=sukses");	
+	  if($query){
+        header("location:produk_v2.php");	
     }else{
       echo "update gagal";
     }	
@@ -495,7 +477,7 @@ if($jenis=='produk_entry'){
   }
 
  
-  $query=mysqli_query($link,$sql) or die ('error update data');
+  $query=mysqli_query($link,$sql);
 
   $fileName     = $_FILES['foto']['name'];
 
@@ -566,7 +548,7 @@ if($jenis=='produk_entry'){
        warna = '$warna_indonesia',
        warna_english = '$warna_english'
      WHERE kode_warna = '$kode_warna'";
- $query=mysqli_query($link,$sql) or die ('error update data');
+ $query=mysqli_query($link,$sql);
 
  $fileName  		= $_FILES['images']['name'];
 
