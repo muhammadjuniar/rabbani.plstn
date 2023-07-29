@@ -168,6 +168,9 @@ if($jenis=='produk_entry'){
       $media_url3="";
     }
 
+    unlink($uploadfile);
+    unlink($uploadfile2);
+    unlink($uploadfile3);
     if($kirimToLocal || $kirimToLocal2 || $kirimToLocal3) {
     if($is_develop == 1){
    		//  $sql="INSERT INTO produk_dev(id,nama_produk,kategori,foto,foto2,foto3,foto_type,foto_size,kode_model,deskripsi,qty_total,harga_total,
@@ -421,6 +424,10 @@ if($jenis=='produk_entry'){
 		// $qup=mysqli_query($link,$up) or die (mysqli_error($link));
 		//echo $up; die();		
 	 	
+    unlink($uploadfile);
+    unlink($uploadfile2);
+    unlink($uploadfile3);
+    
 	if($query){
         header("location:produk_v2.php?message=sukses");	
     }else{
