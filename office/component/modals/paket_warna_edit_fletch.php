@@ -48,9 +48,9 @@ list($kode,$warna,$warnaEnglish,$images)=mysqli_fetch_array($query);
 									</div>
 
 									<div class="form-group row">
-										<div class="col-sm-10">
-											<input type="submit" class="btn btn-warning" id="btnform" value="Update">
-											<button type="button" class="btn btn-success" data-dismiss="modal">Batal</button>
+										<div class="col text-center">
+											<input type="submit" class="btn btn-success" id="btnform" value="Update">
+											<button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
 										</div>
 									</div>	
 								</form>

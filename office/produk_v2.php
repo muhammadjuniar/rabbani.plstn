@@ -25,7 +25,7 @@
 				<div class="tbl">
 					<div class="tbl-row">
 						<div class="tbl-cell">
-							<h2>produk</h2>
+							<h2>Produk</h2>
 							<div class="subtitle">Welcome to Rabbani Palestine</div>
 						</div>
 					</div>
@@ -62,72 +62,74 @@
 						FROM produk_dev";
                     $query=mysqli_query($link,$sql);     
 					?>
-					<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-						<thead>
-						<tr>
-							<th>No</th>
-							<th>ID</th>
-							<th>Pic.</th>
-							<th>Nama</th>
-							<th>Kode model</th>
-							<th>Deskripsi</th>
-							<th>Qty produk</th>
-							<th>Tot.harga</th>
-							<th>start</th>
-							<th>end</th>
-							<th>created_by</th>
-							<th>created_at</th>
-							<th>Status</th>
-							<th>Aksi</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php
-						$no=0;
-						$grand_qty_total=0;
-						$grand_harga_total=0;
-						while(list($id,$nama_produk,$foto,$foto_type,$foto_size,$kode_model,$deskripsi,$qty_total,$harga_total,$start,
-                         $end,$is_send,$is_batal,$repeat,$created_at,$created_by,$status)=mysqli_fetch_array($query)){
-							$no++;
-							if($status==1) {
-								$text_status="aktif";
-							} else {
-								$text_status="tidak aktif";
+					<div class="table-responsive">
+						<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+							<tr>
+								<th>No</th>
+								<th>ID</th>
+								<th>Pic.</th>
+								<th>Nama</th>
+								<th>Kode model</th>
+								<th>Deskripsi</th>
+								<th>Qty produk</th>
+								<th>Tot.harga</th>
+								<th>start</th>
+								<th>end</th>
+								<th>created_by</th>
+								<th>created_at</th>
+								<th>Status</th>
+								<th>Aksi</th>
+							</tr>
+							</thead>
+							<tbody>
+							<?php
+							$no=0;
+							$grand_qty_total=0;
+							$grand_harga_total=0;
+							while(list($id,$nama_produk,$foto,$foto_type,$foto_size,$kode_model,$deskripsi,$qty_total,$harga_total,$start,
+							$end,$is_send,$is_batal,$repeat,$created_at,$created_by,$status)=mysqli_fetch_array($query)){
+								$no++;
+								if($status==1) {
+									$text_status="aktif";
+								} else {
+									$text_status="tidak aktif";
+								}
+							?>
+							<tr>
+								<td><?php echo $no;?></td>
+								<td><a href="produk_detail_v2.php?idproduk=<?php echo $id?>"><?php echo $id;?></a></td>
+								<td><img src="<?php echo $foto?>" style="width: 50px;"></td>
+								<td><?php echo $nama_produk;?></td>
+								<td><?php echo $kode_model;?></td>
+								<td><?php echo $deskripsi;?></td>
+								<td><?php echo $qty_total;?></td>
+								<td><?php echo number_format($harga_total);?></td>
+								<td><?php echo $start;?></td>
+								<td><?php echo $end;?></td>
+								<td><?php echo $created_by;?></td>
+								<td><?php echo $created_at;?></td>
+								<td><?php echo $text_status;?></td>
+								<td>
+									<a href="#" data-toggle="modal" data-target="#modalEdit" data-id="<?php echo $id;?>"><i class="fa fa-edit"></i></a>
+								</td>
+							</tr>
+							<?php 
+							$grand_qty_total+=$qty_total;
+							$grand_harga_total+=$harga_total;
 							}
-						?>
-						<tr>
-							<td><?php echo $no;?></td>
-							<td><a href="paket_detail.php?idproduk=<?php echo $id?>"><?php echo $id;?></a></td>
-							<td><img src="../<?php echo $foto?>" style="width: 50px;"></td>
-							<td><?php echo $nama_produk;?></td>
-							<td><?php echo $kode_model;?></td>
-							<td><?php echo $deskripsi;?></td>
-							<td><?php echo $qty_total;?></td>
-							<td><?php echo number_format($harga_total);?></td>
-							<td><?php echo $start;?></td>
-							<td><?php echo $end;?></td>
-							<td><?php echo $created_by;?></td>
-							<td><?php echo $created_at;?></td>
-							<td><?php echo $text_status;?></td>
-							<td>
-								<a href="#" data-toggle="modal" data-target="#modalEdit" data-id="<?php echo $id;?>"><i class="fa fa-edit"></i></a>
-							</td>
-						</tr>
-						<?php 
-						   $grand_qty_total+=$qty_total;
-						   $grand_harga_total+=$harga_total;
-						}
-						?>
-						</tbody>
-						<tfoot>
-						<tr>
-							<th colspan="6"></th>
-							<th><?php echo number_format($grand_qty_total);?></th>
-							<th><?php echo number_format($grand_harga_total);?></th>
-							<th colspan="6"></th>
-						</tr>
-						</tfoot>
-					</table>
+							?>
+							</tbody>
+							<tfoot>
+							<tr>
+								<th colspan="6"></th>
+								<th><?php echo number_format($grand_qty_total);?></th>
+								<th><?php echo number_format($grand_harga_total);?></th>
+								<th colspan="6"></th>
+							</tr>
+							</tfoot>
+						</table>
+					</div>
 				</div>
 			</section>
 		
@@ -154,12 +156,26 @@
 
 		$(function() {
 	   		$('.flatpickr').flatpickr();
-	   });
+	   	});
 
 		function reset_input(){
 			//alert('beuh');
 			$('.entry').val('');
+			$('#inputGambar2').css({display: 'none'});
+			$('#inputGambar3').css({display: 'none'});
 		}
+		
+		$('#foto').on('change', function() {
+		if(this.value != "") {
+			$('#inputGambar2').css({display: 'flex'});
+		} 
+		});
+
+		$('#foto2').on('change', function() {
+		if(this.value != "") {
+			$('#inputGambar3').css({display: 'flex'});
+		} 
+		});
 
 
 	</script>	

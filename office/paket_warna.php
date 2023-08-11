@@ -5,9 +5,17 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 <html>
 <head lang="en">
 	<?php include"rell_top.php";?>
+	<!-- <link rel="stylesheet" href="css/lib/datatables-net/datatables.min.css">
+	<link rel="stylesheet" href="css/separate/vendor/datatables-net.min.css"> -->
 </head>
 <body class="with-side-menu control-panel control-panel-compact">
-
+<style>
+	@media (min-width: 767px) {
+		.gap-col {
+			margin-left: -24px;	
+		}
+	}
+</style>
 	<?php include"header.php";?>
 
 	<div class="mobile-menu-left-overlay"></div>
@@ -21,7 +29,7 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 				<div class="tbl">
 					<div class="tbl-row">
 						<div class="tbl-cell">
-							<h2>Warna</h2>
+							<h2>Warna Bahan</h2>
 							<div class="subtitle">Welcome to Rabbani Palestine</div>
 						</div>
 					</div>
@@ -29,6 +37,8 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 			</header>
 			<?php 
 			   include "component/modals/paket_warna_entry.php";
+			   include "component/modals/paket_warna_bulk.php"; 
+			   include "component/modals/paket_warna_bulk_edit.php"; 
 			   include "component/modals/paket_warna_edit.php"; 
 			?>
 			<section class="card">
@@ -50,7 +60,7 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 										/>
 									</p>						
 								</div>	
-								<div class="col-sm-2">
+								<div class="col-sm-2 gap-col">
 									<p class="form-control-static">
 										<input name="limit" id="limit" class="form-control" autocomplete="off"
 										<?php if(isset($_GET['limit']) && $_GET['limit'] != ""){ ?>
@@ -64,6 +74,8 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 									<input class="btn btn-info" type="submit" id="submit" value="Cari">
 									<a href="paket_warna.php"><input type="button" value="Reset" class="btn btn-secondary"></a>
 									<a href="#" class="pull-right" data-toggle="modal" data-target="#produkWarnaEntry"><button class="btn btn-success" onclick="reset_input()">+ Warna</button></a>
+									<!-- <a href="#" class="pull-right mr-1" data-toggle="modal" data-target="#produkWarnaBulkEdit"><button class="btn btn-success" onclick="reset_input()">Edit Bulk Image</button></a> -->
+									<a href="#" class="pull-right mr-1" data-toggle="modal" data-target="#produkWarnaBulk"><button class="btn btn-success" onclick="reset_input()">Import Warna</button></a>
 									<!-- <a href="#" data-toggle="modal" data-target="#produkWarnaBulk"><button class="btn btn-success" onclick="reset_input()">Upload Bulk Warna</button></a> -->
 								</div>
 						</div>
@@ -125,17 +137,17 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 								<?php } else { ?>
 									<!-- <a href="#" data-toggle="modal" data-target="#imageEdit" data-id="<?php echo $kode;?>">Add Color Image</a> -->
 									<p class="btn btn-sm btn-secondary" id="addImage<?php echo $kode;?>" onclick="showFunction('<?php echo $kode;?>')">Add Color Image</p>
-									<form id="form-image<?php echo $kode;?>" method="post" action="api_proses.php" enctype="multipart/form-data" style="display:none">
+									<form id="form-image<?php echo $kode;?>" method="post" action="api_proses_v2.php" enctype="multipart/form-data" style="display:none">
 										<input type="hidden" name="jenis" value="produk_warna_edit_image">	
 										<input type="hidden" name="kode_warna" value="<?php echo $kode;?>">	
 										
 										<div class="form-group row">
 											<div class="col-sm-8">
-												<input type="file" id="eimages<?php echo $kode;?>" name="images">
+												<input type="file" id="eimages<?php echo $kode;?>" name="images" required>
 											</div>
 											<div class="col-sm-4">
-												<input type="submit" class="btn btn-sm btn-warning" id="btnform" value="Add">
-												<input type="button" class="btn btn-sm btn-info" id="btnform" value="Batal" onclick="hideFunction('<?php echo $kode;?>')">
+												<input type="submit" class="btn btn-sm btn-success" id="addBtn" value="Add">
+												<input type="button" class="btn btn-sm btn-warning" id="btnform" value="Batal" onclick="hideFunction('<?php echo $kode;?>')">
 											</div>
 										</div>
 									</form>
@@ -214,6 +226,13 @@ $thisPage=$_SERVER['PHP_SELF']; ?>
 	}
 
 	</script>	
+
+	<!-- <script src="js/lib/datatables-net/datatables.min.js"></script>
+	<script>
+		$(function() {
+			$('#example').DataTable();
+		});
+	</script> -->
 
 	</body>
 </html>

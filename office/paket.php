@@ -62,6 +62,7 @@
 						FROM produk";
                     $query=mysqli_query($link,$sql);     
 					?>
+					<div class="table-responsive">
 					<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>
 						<tr>
@@ -83,11 +84,13 @@
 						</thead>
 						<tbody>
 						<?php
-						$no=0;
-						$grand_qty_total=0;
-						$grand_harga_total=0;
-						while(list($id,$nama_produk,$foto,$foto_type,$foto_size,$kode_model,$deskripsi,$qty_total,$harga_total,$start,
-                         $end,$is_send,$is_batal,$repeat,$created_at,$created_by,$status)=mysqli_fetch_array($query)){
+							$no=0;
+							$grand_qty_total=0;
+							$grand_harga_total=0;
+							
+							while(list($id,$nama_produk,$foto,$foto_type,$foto_size,$kode_model,$deskripsi,$qty_total,$harga_total,$start,
+							$end,$is_send,$is_batal,$repeat,$created_at,$created_by,$status)=mysqli_fetch_array($query)){
+							
 							$no++;
 							if($status==1) {
 								$text_status="aktif";
@@ -128,6 +131,7 @@
 						</tr>
 						</tfoot>
 					</table>
+					</div>
 				</div>
 			</section>
 		

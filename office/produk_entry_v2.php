@@ -65,14 +65,14 @@
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-sm-2 form-control-label">Foto produk *</label>
+										<label class="col-sm-2 form-control-label">Foto produk 1*</label>
 										<div class="col-sm-10">
 											<p class="form-control-static">
 												<input type="file" class="form-control entry" id="foto" name="foto" required></p>
 											</p>
 										</div>
 									</div>
-									<div class="form-group row">
+									<div class="form-group row" id="inputGambar2">
 										<label class="col-sm-2 form-control-label">Foto produk 2</label>
 										<div class="col-sm-10">
 											<p class="form-control-static">
@@ -80,7 +80,7 @@
 											</p>
 										</div>
 									</div>
-									<div class="form-group row">
+									<div class="form-group row" id="inputGambar3">
 										<label class="col-sm-2 form-control-label">Foto produk 3</label>
 										<div class="col-sm-10">
 											<p class="form-control-static">
@@ -110,9 +110,9 @@
 									
 									
 									<div class="form-group row">
-										<div class="col-sm-10">
-											<input type="submit" class="btn btn-warning" id="btnform" value="Simpan">
-											<button type="button" class="btn btn-success" data-dismiss="modal">Batal</button>
+										<div class="col text-center">
+											<input type="submit" class="btn btn-success" id="btnform" value="Simpan">
+											<button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
 										</div>
 									</div>	
 								</form>

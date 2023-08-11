@@ -110,7 +110,9 @@
 							<td><?php echo $barcode;?></td>
 							<td><?php echo $nama_produk;?></td>
 							<td><?php echo $ukuran;?></td>
-							<td><?php echo $warna;?></td>
+							<td>
+							<a href="paket_gambar_per_warna.php?idproduk=<?php echo $id_paket?>&kode=<?php echo $warna;?>"><?php echo $warna;?></a>
+							</td>
 							<td><?php echo $disc_conf?></td>
 							<td><?php echo $qty;?></td>
 							<td><?php echo number_format($harga);?></td>
