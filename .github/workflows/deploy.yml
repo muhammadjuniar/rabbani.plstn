@@ -1,0 +1,27 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy Command
+        uses: appleboy/ssh-action@master
+        with:
+          # hostname / IP of the server
+          host: ${{ secrets.SSH_HOST_PLSTN }}
+          # user of the server
+          username: ${{ secrets.SSH_USERNAME }}
+          # private ssh key registered on the server
+          key: ${{ secrets.SSH_PRIVATE_KEY_PLSTN }}
+          # ssh port of the server
+          port: 22
+          # command to be executed
+          script: |
+            cd /var/www/rabbani.plstn
+            git pull
