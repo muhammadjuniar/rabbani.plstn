@@ -14,9 +14,9 @@ $sanitized_prodid = mysqli_real_escape_string($link, $idp);
 $queryCekId = sprintf("SELECT id FROM produk WHERE id='". $sanitized_prodid . "'",
 mysqli_real_escape_string($link, $idp));
 $result = mysqli_query($link, $queryCekId);
-if(mysqli_num_rows($result) < 1) {
-	header('Location: /');
-}
+// if(mysqli_num_rows($result) < 1) {
+// 	header('Location: /');
+// }
 
 	$sql="	SELECT
                 id,
@@ -299,6 +299,7 @@ include ("template/header_produk.php");?>
 		<div id="title-mob" class="container mb-2">
 			<!-- <a href="#">Kerudung Sekolah /</a> -->
 			<a href="#"><h5><?php echo $nama_produk;?></h5></a>
+			<?php echo $name ?>
 		</div>
 		<div id="mobile" class="container clearfix" style="background-color:#fff; border-radius:8px;box-shadow: 0px 0px 2px 1px rgba(128, 0, 0, 0.25);">
 
