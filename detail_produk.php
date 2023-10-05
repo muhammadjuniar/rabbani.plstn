@@ -3,22 +3,20 @@ include"template/connect_main.php";
 // $root="/var/www/rabbani.plstn/";
 $root="";
 
-$idp=$_GET['name'];
+$name=$_GET['name'];
 
-$sqlID="SELECT id FROM produk WHERE nama_produk LIKE '%$idp%'";
+$sqlID="SELECT id FROM produk WHERE nama_produk LIKE '%$name%'";
 $queryID=mysqli_query($link,$sqlID);
-list($idpw)=mysqli_fetch_array($queryID);
-
-$pwid = $idpw;
+list($idp)=mysqli_fetch_array($queryID);
 
 $sanitized_prodid = mysqli_real_escape_string($link, $idp);
 
-$queryCekId = sprintf("SELECT nama_produk FROM produk WHERE nama_produk='". $sanitized_prodid . "'",
+$queryCekId = sprintf("SELECT id FROM produk WHERE id='". $sanitized_prodid . "'",
 mysqli_real_escape_string($link, $idp));
 $result = mysqli_query($link, $queryCekId);
-// if(mysqli_num_rows($result) < 1) {
-// 	header('Location: /');
-// }
+if(mysqli_num_rows($result) < 1) {
+	header('Location: /');
+}
 
 	$sql="	SELECT
                 id,
@@ -31,7 +29,7 @@ $result = mysqli_query($link, $queryCekId);
                 harga_total,
                 `status`
         	FROM produk 
-			WHERE nama_produk LIKE '%$idp%'
+			WHERE id='$idp'
 		";
         $query=mysqli_query($link,$sql);
         list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
@@ -364,6 +362,7 @@ include ("template/header_produk.php");?>
 				<div id="mob-produk" class="col detail-p">
 					<h3 class="margin0 judul-produk" ><?php echo $nama_produk;?></h3>
 					<h1 class="rp" id="show_price">IDR. <?php echo number_format($harga);?></h1>
+					<input type="hidden" name="harga1" id="harga1">
 					
 					<p class="pilih">Color Available</p>
 					<div class="mb-1">
@@ -376,14 +375,14 @@ include ("template/header_produk.php");?>
 					INNER JOIN produk AS p 
 						ON (pw.id = p.id)
 					INNER JOIN warna AS w
-						ON (pw.kode_warna = w.kode_warna) WHERE p.id='$pwid' ORDER BY w.warna_english ASC";
+						ON (pw.kode_warna = w.kode_warna) WHERE p.id='$idp' ORDER BY w.warna_english ASC";
 					 $query=mysqli_query($link,$sql);	
 							//  echo $sql;        
 							while(list($kode_warna,$warna)=mysqli_fetch_array($query)){    	      	        
 					?>
 							<div class="button">
 								<input style="margin-top:10px !important" type="radio" id="<?php echo $warna;?>" name="warna"  value="<?php echo $warna;?>"  />
-								<label class="btn button-color" for="<?php echo $warna;?>" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>" onclick="changeColor('<?php echo $id; ?>','<?php echo $kode_warna; ?>','<?php echo $root; ?>')"></label>
+								<label class="btn button-color" for="<?php echo $warna;?>" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>" onclick="changeColor('<?php echo $idp; ?>','<?php echo $kode_warna; ?>','<?php echo $root; ?>')"></label>
 							</div>
 					<?php } ?>	
 					</div>
