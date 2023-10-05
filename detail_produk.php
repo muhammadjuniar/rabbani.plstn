@@ -3,15 +3,17 @@ include"template/connect_main.php";
 // $root="/var/www/rabbani.plstn/";
 $root="";
 
-$name=$_GET['name'];
+$idp=$_GET['name'];
 
-$sqlID="SELECT id FROM produk WHERE nama_produk LIKE '%$name%'";
+$sqlID="SELECT id FROM produk WHERE nama_produk LIKE '%$idp%'";
 $queryID=mysqli_query($link,$sqlID);
-list($idp)=mysqli_fetch_array($queryID);
+list($idpw)=mysqli_fetch_array($queryID);
+
+$pwid = $idpw;
 
 $sanitized_prodid = mysqli_real_escape_string($link, $idp);
 
-$queryCekId = sprintf("SELECT id FROM produk WHERE id='". $sanitized_prodid . "'",
+$queryCekId = sprintf("SELECT nama_produk FROM produk WHERE nama_produk='". $sanitized_prodid . "'",
 mysqli_real_escape_string($link, $idp));
 $result = mysqli_query($link, $queryCekId);
 // if(mysqli_num_rows($result) < 1) {
@@ -29,7 +31,7 @@ $result = mysqli_query($link, $queryCekId);
                 harga_total,
                 `status`
         	FROM produk 
-			WHERE id='$idp'
+			WHERE nama_produk LIKE '%$idp%'
 		";
         $query=mysqli_query($link,$sql);
         list($id,$nama_produk,$kategori,$images,$images2,$images3,$deskripsi,$harga,$status)=mysqli_fetch_array($query);
@@ -299,7 +301,6 @@ include ("template/header_produk.php");?>
 		<div id="title-mob" class="container mb-2">
 			<!-- <a href="#">Kerudung Sekolah /</a> -->
 			<a href="#"><h5><?php echo $nama_produk;?></h5></a>
-			<?php echo $name ?>
 		</div>
 		<div id="mobile" class="container clearfix" style="background-color:#fff; border-radius:8px;box-shadow: 0px 0px 2px 1px rgba(128, 0, 0, 0.25);">
 
@@ -375,14 +376,14 @@ include ("template/header_produk.php");?>
 					INNER JOIN produk AS p 
 						ON (pw.id = p.id)
 					INNER JOIN warna AS w
-						ON (pw.kode_warna = w.kode_warna) WHERE p.id='$idp' ORDER BY w.warna_english ASC";
+						ON (pw.kode_warna = w.kode_warna) WHERE p.id='$pwid' ORDER BY w.warna_english ASC";
 					 $query=mysqli_query($link,$sql);	
 							//  echo $sql;        
 							while(list($kode_warna,$warna)=mysqli_fetch_array($query)){    	      	        
 					?>
 							<div class="button">
 								<input style="margin-top:10px !important" type="radio" id="<?php echo $warna;?>" name="warna"  value="<?php echo $warna;?>"  />
-								<label class="btn button-color" for="<?php echo $warna;?>" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>" onclick="changeColor('<?php echo $idp; ?>','<?php echo $kode_warna; ?>','<?php echo $root; ?>')"></label>
+								<label class="btn button-color" for="<?php echo $warna;?>" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>" onclick="changeColor('<?php echo $id; ?>','<?php echo $kode_warna; ?>','<?php echo $root; ?>')"></label>
 							</div>
 					<?php } ?>	
 					</div>
