@@ -13,7 +13,7 @@
             <?php if(isset($_GET['cate'])){ ?> 
                 <a class="link-category"><?php echo ucfirst($_GET['cate']); ?></a>
             <?php }else{ ?>
-                <a href="category.php?cate=all" class="link-category">Show all</a>
+                <a href="category-<?php echo 'All' ?>" class="link-category">Show all</a>
             <?php } ?>
         </div>
       </div>

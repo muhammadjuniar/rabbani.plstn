@@ -198,12 +198,12 @@
             <a href="#" class="nav-category" ><span class="login-span" >Rabbani Men Palestine Series</span></a>
         </div>
         <div>
-            <a href="index.php"><img class="nav-b img-logo rabbani" src="assets/images/logo/ico_logo_rabbani.png" alt="rabbani"></a>
+            <a href="/"><img class="nav-b img-logo rabbani" src="assets/images/logo/ico_logo_rabbani.png" alt="rabbani"></a>
           
-            <a href="index.php"><img class="rabbani-mob" src="assets/images/logo/ico_logo_rabbani.png" alt="rabbani" style="  "></a>
+            <a href="/"><img class="rabbani-mob" src="assets/images/logo/ico_logo_rabbani.png" alt="rabbani" style="  "></a>
         </div>
         <div class="mob-name">&nbsp;
-        <a href="index.php" style="color:#fff">
+        <a href="/" style="color:#fff">
             <i class="icon-home icon-13xx"></i>&nbsp;
         </a>
 

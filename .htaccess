@@ -1,0 +1,22 @@
+
+RewriteEngine on
+
+RewriteRule ^~/ index.php
+RewriteRule ^category-([^-]*) category.php?cate=$1 [L]
+RewriteRule ^product-([^-]*) detail_produk.php?name=$1 [L]
+
+
+# server {
+#     location = /
+#     {
+#         rewrite ^/ index.php;
+#     }
+#     location = /category.php
+#     {
+#         rewrite ^category-([^-]*) category.php?cate=$1;
+#     }
+#     location = /detail_produk.php
+#     {
+#        rewrite  ^product-([^-]*) detail_produk.php?name=$1;
+#     }
+# }

@@ -80,7 +80,8 @@
         ?>
         <div class="col-md-4 pt-2">
           <div class="list-produk">
-            <a href="category.php?cate=<?php echo $id;?>">
+            <!-- <a href="category.php?cate=<?php echo $id;?>"> -->
+            <a href="category-<?php echo ucfirst($id);?>">
                 <img style="width: 400px !important;" src="assets/images/<?php echo $images;?>" alt="<?php echo $images;?>">
     
                 <h5 class="title"><?php echo $nama_kategori?></h5>
@@ -111,7 +112,7 @@
         ?>
         <div class="col-md-4 pt-4">
           <div class="list-produk">
-              <a href="detail_produk.php?idp=<?php echo $id?>">
+              <a href="product-<?php echo str_replace([" ","-"],"_",$nama_produk)?>">
                 <img src="<?php echo $images; ?>" alt="<?php $nama_produk;?>">
     
                 <h5 class="title"><?php echo $nama_produk;?></h5>

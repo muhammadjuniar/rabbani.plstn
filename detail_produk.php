@@ -3,7 +3,11 @@ include"template/connect_main.php";
 // $root="/var/www/rabbani.plstn/";
 $root="";
 
-$idp=$_GET['idp'];
+$name=$_GET['name'];
+
+$sqlID="SELECT id FROM produk WHERE nama_produk LIKE '%$name%'";
+$queryID=mysqli_query($link,$sqlID);
+list($idp)=mysqli_fetch_array($queryID);
 
 $sanitized_prodid = mysqli_real_escape_string($link, $idp);
 
@@ -11,7 +15,7 @@ $queryCekId = sprintf("SELECT id FROM produk WHERE id='". $sanitized_prodid . "'
 mysqli_real_escape_string($link, $idp));
 $result = mysqli_query($link, $queryCekId);
 if(mysqli_num_rows($result) < 1) {
-	header('Location: index.php');
+	header('Location: /');
 }
 
 	$sql="	SELECT
@@ -288,7 +292,6 @@ include ("template/header_produk.php");?>
 			}
 		}
 	</style>
-
 <?php require_once "color_convert.php"; ?>
 <section id="content" style="margin-bottom: 0px; ">
 
@@ -301,9 +304,8 @@ include ("template/header_produk.php");?>
 
 			<!-- Post Content
 			============================================= -->
-			<div class="row">
+			<div class="row" id="showImage">
 				<div class="col-md-6" >
-					<div id="showImage">
 						<div id="indikator" class="carousel slide" data-ride="carousel" data-interval="false">
 							
 							<ol class="carousel-indicators-inside">
@@ -355,39 +357,11 @@ include ("template/header_produk.php");?>
 								
 							</ol>
 						</div>
-					</div>
 				</div>
 				
 				<div id="mob-produk" class="col detail-p">
 					<h3 class="margin0 judul-produk" ><?php echo $nama_produk;?></h3>
-					<!-- <p class="margin0 hilang"><?php echo $persen_disc ;?></p> -->
 					<h1 class="rp" id="show_price">IDR. <?php echo number_format($harga);?></h1>
-					<input type="hidden" name="harga1" id="harga1">
-					<!-- <p class="margin0">50% <del>Rp.100.000</del></p> -->
-
-					<!-- <p class="pilih">Size Available</p>
-					<div id="size_choise" class="mb-3">
-							<?php 
-							$sql="SELECT
-								    u.ukuran
-								FROM
-								    produk_detail AS pd
-								    INNER JOIN ukuran AS u 
-								        ON (pd.ukuran = u.kode_ukuran) WHERE pd.id_produk='$idp'
-								        GROUP BY u.ukuran ORDER BY u.kode_ukuran ASC";
-							 $query=mysqli_query($link,$sql);	
-							 //echo $sql;        
-							while(list($ukuran)=mysqli_fetch_array($query)){    	        
-							?>
-							<div class="button" >
-								<label class="btn" style="margin-top:5px;"><?php echo $ukuran; ?></label>
-							</div>
-							<?php } ?>
-
-					</div>
-					<div id="tampil_ukuran">
-						
-					</div> -->
 					
 					<p class="pilih">Color Available</p>
 					<div class="mb-1">
@@ -407,7 +381,7 @@ include ("template/header_produk.php");?>
 					?>
 							<div class="button">
 								<input style="margin-top:10px !important" type="radio" id="<?php echo $warna;?>" name="warna"  value="<?php echo $warna;?>"  />
-								<label class="btn button-color" for="<?php echo $warna;?>" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>" onclick="changeColor('<?php echo $_GET['idp']; ?>','<?php echo $kode_warna; ?>','<?php echo $root; ?>')"></label>
+								<label class="btn button-color" for="<?php echo $warna;?>" style="background-color:<?php echo colorconvert(preg_replace("/[^a-zA-Z]/", "", $warna));?>" onclick="changeColor('<?php echo $idp; ?>','<?php echo $kode_warna; ?>','<?php echo $root; ?>')"></label>
 							</div>
 					<?php } ?>	
 					</div>

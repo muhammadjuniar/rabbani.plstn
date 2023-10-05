@@ -26,7 +26,7 @@
 
       <div class="row pt-2">
         <?php 
-        if($_GET['cate'] == 'all'){
+        if($_GET['cate'] == 'All' || $_GET['cate'] == 'all'){
           $filter_cate = "";
         }else{
           $filter_cate = "WHERE kategori='$_GET[cate]'";
@@ -44,7 +44,7 @@
         ?>
         <div class="col-md-4 pt-4">
           <div class="list-produk">
-              <a href="detail_produk.php?idp=<?php echo $id?>">
+              <a href="product-<?php echo str_replace([" ","-"],"_",$nama_produk)?>">
                 <img src="<?php echo $images; ?>" alt="<?php $nama_produk;?>">
     
                 <h5 class="title"><?php echo $nama_produk;?></h5>

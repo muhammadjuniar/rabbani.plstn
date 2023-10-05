@@ -2,8 +2,15 @@
 <html dir="ltr" lang="en-US">
 <head>
 
-   	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="SemiColonWeb" />
+	<!-- SEO Package -->
+	<meta name="title" content="Rabbani Palestine">
+	<meta name="description" content="Product catalog Rabbani with Palestinian theme. From Rabbani to Palestine.">
+	<meta name="keywords" content="Shirt, Tees, Praying, Kemko, TShirt, T-Shirt, Muslim Fashion, Palestine, Buy Muslim Fashion, Saroong, Sarong, Sarung, Kemeja Koko, Muslim">
+	<meta name="robots" content="index, follow">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="language" content="English">
+	<meta name="revisit-after" content="7 days">
+	<!-- SEO Package End -->
 
 	<!-- Stylesheets
 	============================================= -->
