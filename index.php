@@ -53,6 +53,10 @@
   
   @media (max-width: 767px){
     
+    .body-page {
+      min-height: 440px;
+    }
+  
     .message-position {
       margin-top:24% !important;
       margin-bottom:24% !important;
@@ -109,7 +113,7 @@
 
       </div>
     <?php }; ?>
-    <div id="mobile" class="container" >
+    <div id="mobile" class="container body-page" >
 
     <?php if(!isset($_GET['search']) || $_GET['search'] == '') {; ?>
       <h1 class="pt-4">New Arrivals</h1>
