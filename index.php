@@ -120,7 +120,6 @@
                 FROM produk
                 $filterCari";
         $query=mysqli_query($link,$sql);
-        if
         while(list($id,$nama_produk,$kategori,$images,$harga,$status)=mysqli_fetch_array($query)){    
         ?>
         <div class="col-md-4 pt-4">
