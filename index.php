@@ -36,6 +36,11 @@
     animation: fadeIn 2s;
   }
 
+  .message-position {
+    margin-top:6% !important;
+    margin-bottom:6% !important;
+  }
+
   @keyframes fadeIn {
 			0% { opacity: 0; }
 			100% { opacity: 1; }
@@ -46,6 +51,13 @@
 			100% { opacity: 0; }
 	}
   
+  @media (max-width: 767px){
+    
+    .message-position {
+      margin-top:24% !important;
+      margin-bottom:24% !important;
+    }
+  }
   
   @media (max-width: 440px){
     .list-produk .title {
@@ -120,6 +132,8 @@
                 FROM produk
                 $filterCari";
         $query=mysqli_query($link,$sql);
+        $numrow=mysqli_num_rows($query);
+        if($numrow > 0) {
         while(list($id,$nama_produk,$kategori,$images,$harga,$status)=mysqli_fetch_array($query)){    
         ?>
         <div class="col-md-4 pt-4">
@@ -133,6 +147,14 @@
           </div>
         </div>
         <?php } ?>
+        <?php }else{ ?>
+        <div class="col-md-12">
+          <div class="mt-5 text-center message-position">
+            <img src="assets/images/not_found.png" width=240 />
+            <p>Sorry, your search about <b>"<?php echo $cari; ?>"</b> can't be found.</p>
+          </div>
+        </div>
+        <?php }; ?>
         
        
       </div>
