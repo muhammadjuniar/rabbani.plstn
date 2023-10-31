@@ -37,8 +37,42 @@
     }
     
     .top-nav{
-            margin-bottom:-45px; margin-top:15px;
-        }
+        margin-bottom:-45px; margin-top:15px;
+    }
+
+    .btn-danger {
+        background-color: #e93636 !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #e93636 !important;
+        opacity: 0.6; /* Firefox */
+    }
+
+    .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #e93636 !important;
+    }
+
+    .form-control::-ms-input-placeholder { /* Microsoft Edge */
+        color: #e93636 !important;
+    }
+
+    .form-control:focus {
+        color: #e93636 !important;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+
+    .search-form {
+        padding-left:25%;
+        padding-right:25%;
+    }
+
+    .search-form .form-size {
+        width: 400px;
+    }
 
     /* .btn-custom{
         background-color: #b75ae2; border-color: #b75ae2; color: #fff;
@@ -85,7 +119,38 @@
         }
     }
 
+    @media (max-width: 1024px){
+        
+        .search-form .form-size {
+            width: 400px;
+        }
+        .search-form {
+            padding-left:10%;
+            padding-right:10%;
+        }
+    }
+    
+    @media (max-width: 920px){
+        
+        .search-form .form-size {
+            width: 300px;
+        }
+        .search-form {
+            padding-left:10%;
+            padding-right:10%;
+        }
+    }
+
     @media (max-width: 767px){
+        
+        .search-form .form-size {
+            width: 200px;
+        }
+        .search-form {
+            padding-left:15%;
+            padding-right:10%;
+        }
+
         .brand{
             padding-top:30px; margin-bottom:-70px;
         }
@@ -187,6 +252,38 @@
         }
         
     }
+
+    @media (max-width: 540px){
+        
+        .search-form .form-size {
+            width: 300px;
+        }
+        .search-form {
+            padding-left:15%;
+            padding-right:10%;
+        }
+    }
+
+    @media (max-width:420px){
+        
+        .search-form .form-size {
+            width: 200px;
+        }
+    }
+
+    @media (max-width:360px){
+        
+        .search-form .form-size {
+            width: 180px;
+        }
+    }
+
+    @media (max-width:280px){
+        
+        .search-form .form-size {
+            width: 120px;
+        }
+    }
 </style>
 <body>
     
@@ -200,12 +297,16 @@
         <div>
             <a href="/"><img class="nav-b img-logo rabbani" src="assets/images/logo/ico_logo_rabbani.png" alt="rabbani"></a>
           
-            <a href="/"><img class="rabbani-mob" src="assets/images/logo/ico_logo_rabbani.png" alt="rabbani" style="  "></a>
+            <!-- <a href="/"><img class="rabbani-mob" src="assets/images/logo/ico_logo_rabbani.png" alt="rabbani" style="  "></a> -->
         </div>
-        <div class="mob-name">&nbsp;
+        <form action="/" method="GET" class="form-inline top-nav search-form">
+            <input class="form-control form-size" name="search" type="text" placeholder="Search" aria-label="Search" value=<?php if(isset($_GET['search'])){ echo $_GET['search']; }else{ echo ''; } ;?>>
+            <button class="btn btn-danger" type="submit">Search</button>
+        </form>
+        <!-- <div class="mob-name">&nbsp;
         <a href="/" style="color:#fff">
             <i class="icon-home icon-13xx"></i>&nbsp;
-        </a>
+        </a> -->
 
         </div>
     </div>
