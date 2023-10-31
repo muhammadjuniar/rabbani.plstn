@@ -292,7 +292,7 @@
     <div id="mobile" class="container nav-link">
         <a href="https://wa.me/628112346165?text" class="nav-contact"><span>Contact Us</span></a>
         <div class="top-nav"> 				
-            <a href="#" class="nav-category" ><span class="login-span" >Rabbani Men Palestine Series</span></a>
+            <a href="/" class="nav-category" ><span class="login-span" >Rabbani Men Palestine Series</span></a>
         </div>
         <div>
             <a href="/"><img class="nav-b img-logo rabbani" src="assets/images/logo/ico_logo_rabbani.png" alt="rabbani"></a>
